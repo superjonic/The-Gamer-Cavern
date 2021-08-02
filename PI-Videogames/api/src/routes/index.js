@@ -17,9 +17,9 @@ const router = Router();
 router.get('/videogames', async (req, res) => {
     const { name } = req.query;
     if(!name){
-        const games = await axios.get(`${URL}games?key=${API_KEY}`);
+        const games = await axios.get(`${URL}games?key=${API_KEY}`);    //OJO la idea es traernos 100 games
         
-        return res.send(games.data.results);  
+        return res.send(games.data.results);   //puedo hacerle un slice con dos parametros variables mathrandom  
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
         //deberia hacer un axios a la api, me traigo los matches, y luego con un for limito la cantidad a 15
@@ -101,21 +101,24 @@ router.get('/genres', async (req, res) => {
     
 })
 
-router.post('/videogame',   (req, res) => {
+router.post('/videogame', async (req, res) => {
     const {name, description, released, platforms, rating } = req.body    //aca van los datos que llegan desde el form
     console.log(req.body)
-    if(name && description && platforms){
-     const newGame = Videogame.create({
-                name: name,
-                description,
-                released,
-                rating,
-                platforms
-        })
-        .then(console.log('se creo'))
-        return res.json(newGame)
+    try{
+        if(name && description && platforms){
+            const newGame = await Videogame.create({
+                       name: name,
+                       description,
+                       released,            //OJO released tiene que llegar en formato numero sino se rompe
+                       rating,
+                       platforms
+            })
+             return res.send(newGame)
+        }
     }
-     res.send("no se crearon videogames")
+    catch(error){
+        console.log(error)
+    }
 })
 
 module.exports = router;
