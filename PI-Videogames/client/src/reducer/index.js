@@ -1,7 +1,7 @@
 import { ADD_VIDEOGAME, GET_VIDEOGAMES } from "../actions";
 
 const initialState = {
-  videogames: [],
+  videogames: [],       
   createdGames: []
 };
 

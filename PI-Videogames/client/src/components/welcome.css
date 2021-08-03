@@ -1,14 +1,38 @@
-body {
+* {
+    margin: 0;
+    padding: 0;
+} 
+.backwelcome {
     background: url('https://i.ytimg.com/vi/IGR7pIeeocU/maxresdefault.jpg');
     color: white;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 .circle {
-    align-items: center;
-    height: 25vh;
-    width: 15rem;
-    background-color:rgba(3, 19, 3, 0.5);
-    color: teal;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10vh;
+    height: 50vh;
+    width: 17rem;
+    border: 3px solid rgba(225, 43, 101); 
+    border-radius: 50px;
+    color: #e3eef5;
+    font-size: 1.4rem;
 
+}
+.btn {
+    background-color: #210648;
+    width: 20vh;
+    color: white;
+    margin: 10vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 

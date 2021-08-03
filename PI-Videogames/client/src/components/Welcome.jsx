@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import './welcome.css';
 
 
 export default function Welcome(){
     return (
-        <body  className = 'welcome'>
-         <div>
-            <div> 
+         <div className = "backwelcome">
+            <div className = "circle"> 
                 <h1>The Gamer Cavern</h1>
                 <p>Welcome</p>
                 <Link to="/home">
-                <button>Enter</button>
+                <button className= "btn">Enter</button>
                 </Link>
             </div>
         </div>
-        </body>
+        
 
     )
 
