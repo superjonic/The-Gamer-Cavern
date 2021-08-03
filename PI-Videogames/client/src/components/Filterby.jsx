@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Gamecard (){
-
+export default function FilterBy() {
     return (
         <div>
-            Card de Game
+
+            
         </div>
     )
 }

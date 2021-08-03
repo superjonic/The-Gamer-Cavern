@@ -8,12 +8,11 @@ function App() {
   return (
     <BrowserRouter>
 
-    <div className="App">
-      <Route exact path='/'> <Welcome /></Route>
+      <Route exact path='/'> <Welcome /> </Route>
 
-      <Route path='/home'> <Home /></Route>
+      <Route path='/home'> <Home /> </Route>
 
-    </div>
+  
 
     </BrowserRouter>
   );

@@ -1,0 +1,14 @@
+body {
+    background: url('https://i.ytimg.com/vi/IGR7pIeeocU/maxresdefault.jpg');
+    color: white;
+}
+
+.circle {
+    align-items: center;
+    height: 25vh;
+    width: 15rem;
+    background-color:rgba(3, 19, 3, 0.5);
+    color: teal;
+
+}
+

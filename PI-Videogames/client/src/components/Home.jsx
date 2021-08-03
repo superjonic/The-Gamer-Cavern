@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import Games from './Games';
 
 
 export default function Home () {
@@ -7,6 +8,7 @@ export default function Home () {
         <div>
             <Nav />
             <h1>Estoy en el Home </h1>
+            <Games />
 
         </div>
 

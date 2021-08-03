@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Gamecard (){
-
+export default function OrderBy () {
     return (
         <div>
-            Card de Game
+
+            
         </div>
     )
 }
