@@ -2,6 +2,7 @@ import axios from 'axios';
 export const ADD_VIDEOGAME = "ADD_VIDEOGAME";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 
+
 export const addVideogame = (payload) => {
     return {
         type: ADD_VIDEOGAME,
