@@ -14,25 +14,32 @@
 
 .circle {
     position: absolute;
-    top: 20%;
-    left: 40%;
+    top: 10%;
+    left: 38%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-top: 10vh;
-    height: 50vh;
-    width: 17rem;
-    border: 3px solid rgba(225, 43, 101); 
+    padding-top: 12vh;
+    height: 70vh;
+    width: 50vh;
+    background-color: rgba(12, 12, 11, 0.8); ;
+    border-top: 5px solid rgba(225, 43, 101); 
+    border-left: 5px solid turquoise;
+    border-right: 5px solid rgb(255, 111, 44);
+    border-bottom: 5px solid rgb(47, 255, 57);
     border-radius: 50px;
     color: #e3eef5;
     font-size: 1.4rem;
+    box-shadow: rgb(77, 133, 236) 0 -1px 7px 1px, inset rgb(233, 66, 122) 0 -1px 9px, rgb(226, 120, 33) 0 2px 12px;
 
 }
-.btn {
+.btn1 {
     background-color: #210648;
     width: 20vh;
     color: white;
-    margin: 10vh;
+    margin-top: 10vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    
 }
 

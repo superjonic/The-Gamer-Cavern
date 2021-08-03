@@ -10,7 +10,7 @@ export default function Welcome(){
                 <h1>The Gamer Cavern</h1>
                 <p>Welcome</p>
                 <Link to="/home">
-                <button className= "btn">Enter</button>
+                <button className= "btn1">Enter</button>
                 </Link>
             </div>
         </div>
