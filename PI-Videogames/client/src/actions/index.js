@@ -12,7 +12,7 @@ export const addVideogame = (payload) => {
 
 export const getVideogames = () => {
     return function (dispatch) {
-       return axios.get('localhost:3001/videogames')
+       return axios.get('localhost:3001/videogames') // consulto al servidor 
        .then((games) => {
            dispatch({
                type: GET_VIDEOGAMES,
