@@ -11,6 +11,7 @@ const URL = `https://api.rawg.io/api/`;
 const router = Router();
 
 
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -18,8 +19,8 @@ router.get('/videogames', async (req, res) => {
     const { name } = req.query;
     if(!name){
         const games = await axios.get(`${URL}games?key=${API_KEY}`);    //OJO la idea es traernos 100 games
-        console.log(games.data.results.slice(0, 100))
-        return res.send(games.data.results.slice(0, 100));   //puedo hacerle un slice con dos parametros variables mathrandom  
+        console.log(games.data)
+        return res.send(games.data.results);   //puedo hacerle un slice con dos parametros variables mathrandom  
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
         //deberia hacer un axios a la api, me traigo los matches, y luego con un for limito la cantidad a 15

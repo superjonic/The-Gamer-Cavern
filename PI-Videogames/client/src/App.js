@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getVideogames())
-  }, [])
+  })
   return (
     <BrowserRouter>
 
