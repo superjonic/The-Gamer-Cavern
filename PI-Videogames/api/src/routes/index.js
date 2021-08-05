@@ -77,31 +77,9 @@ router.get('/genres', async (req, res) => {
         let categories = [];
         const lista = await axios.get(`${URL}genres?key=${API_KEY}`)    //traigo de la api los genres
         categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres
-            return cat.slug
+            return { name: cat.slug }
         })    
-         Genre.bulkCreate([
-
-             {name: categories[0]},
-             {name: categories[1]},
-             {name: categories[2]},
-             {name: categories[3]},
-             {name: categories[4]},
-             {name: categories[5]},
-             {name: categories[6]},
-             {name: categories[7]},
-             {name: categories[8]},
-             {name: categories[9]},
-             {name: categories[10]},
-             {name: categories[11]},
-             {name: categories[12]},
-             {name: categories[13]},
-             {name: categories[14]},
-             {name: categories[15]},
-             {name: categories[16]},
-             {name: categories[17]},
-             {name: categories[18]},
-        
-            ])                                      //ahora tengo que guardarlo en mi db, en el model
+         Genre.bulkCreate(categories)                                      //ahora tengo que guardarlo en mi db, en el model
         console.log(categories)
         res.send(categories)
     }
