@@ -11,11 +11,11 @@ console.log(videogames)
     return (
         <div>
             <h3>Aca van las cards de Game</h3>
-            {/* {
-                videogames.map((g) => {
-                    return <p>{videogames.results}</p>
-                })
-            } */}
+                {
+                    videogames.map((g) => {
+                        return <p>{g.slug}</p>
+                    })
+                }
            
             <Gamecard />
         </div>

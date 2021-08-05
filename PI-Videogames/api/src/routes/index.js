@@ -6,7 +6,8 @@ const { API_KEY } = process.env;
 // Ejemplo: const authRouter = require('./auth.js');
 // const { Videogame } = require('../models/Videogame')
 const { Videogame, Genre } = require('../db');
-const URL = `https://api.rawg.io/api/`;
+const { v4: uuidv4 } = require('uuid');
+const URL = 'https://api.rawg.io/api/';
 
 const router = Router();
 
@@ -17,10 +18,17 @@ const router = Router();
 
 router.get('/videogames', async (req, res) => {
     const { name } = req.query;
+    var games = []
     if(!name){
-        const games = await axios.get(`${URL}games?key=${API_KEY}`);    //OJO la idea es traernos 100 games
-        console.log(games.data)
-        return res.send(games.data.results);   //puedo hacerle un slice con dos parametros variables mathrandom  
+        const games1 = await axios.get(`${URL}games?key=${API_KEY}`);    //OJO la idea es traernos 100 games = 5 pages
+        const games2 = await axios.get(`${URL}games?key=${API_KEY}&page=2`);
+        const games3 = await axios.get(`${URL}games?key=${API_KEY}&page=3`);
+        const games4 = await axios.get(`${URL}games?key=${API_KEY}&page=4`);
+        const games5 = await axios.get(`${URL}games?key=${API_KEY}&page=5`);
+        
+        games = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results, games5.data.results)
+        console.log(games.length)
+        return res.send(games);   //puedo hacerle un slice con dos parametros variables mathrandom  
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
         //deberia hacer un axios a la api, me traigo los matches, y luego con un for limito la cantidad a 15
@@ -109,6 +117,7 @@ router.post('/videogame', async (req, res) => {
     try{
         if(name && description && platforms){
             const newGame = await Videogame.create({
+                       id: uuidv4(), 
                        name: name,
                        description,
                        released,            //OJO released tiene que llegar en formato numero sino se rompe

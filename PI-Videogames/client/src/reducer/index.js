@@ -5,7 +5,7 @@ const initialState = {
   createdGames: []
 };
 
-const rootReducer = (state = initialState, action) => {     //Mati hace el order y filter en redux
+function rootReducer (state = initialState, action) {     //Mati hace el order y filter en redux
     switch(action.type) {
       // Aca va tu codigo;  
       case ADD_VIDEOGAME:
