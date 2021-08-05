@@ -13,12 +13,14 @@ export function addVideogame (payload) {
 
 export function getVideogames() {
     return function (dispatch) {
-       return axios.get('localhost:3001/videogames') // consulto al servidor 
+       return axios.get('http://localhost:3001/videogames') // consulto al servidor 
        .then((games) => {
            dispatch({
                type: GET_VIDEOGAMES,
-               payload: games.data.results   
+               payload: games.data
            })
        })
     }
 }
+
+//ordenamiento puede ir aca

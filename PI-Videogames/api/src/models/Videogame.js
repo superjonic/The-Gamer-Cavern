@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    image: {
+      type: DataTypes.TEXT
+    },
     released: {
       type: DataTypes.DATEONLY
     },

@@ -27,7 +27,19 @@ router.get('/videogames', async (req, res) => {
         const games5 = await axios.get(`${URL}games?key=${API_KEY}&page=5`);
         
         games = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results, games5.data.results)
-        console.log(games.length)
+         
+        games = games.map((g) => {            
+            return { 
+                    id: g.id,
+                    name: g.name,
+                    image: g.background_image,
+                    description: g.description, //description solo figura en el endpoint de id de la api
+                    released: g.released,
+                    rating: g.rating,
+                    platforms: g.platforms
+            
+                    }
+        })
         return res.send(games);   //puedo hacerle un slice con dos parametros variables mathrandom  
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
