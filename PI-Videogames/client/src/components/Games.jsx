@@ -1,22 +1,23 @@
 import React from 'react';
 import Gamecard from './GameCard';
-// import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'; //equivale a mapStateToProps
 
 export default function Games (){
 
 const videogames = useSelector((state) => state.videogames)
-console.log(videogames)
+var nineResults = videogames.slice(0, 9)
+console.log(nineResults)
+
     return (
         <div>
             <h3>Aca van las cards de Game</h3>
                 {
-                    videogames.map((g) => {
+                    nineResults.map((g) => {
                         return (
-                        <div>
-                         <h2>{g.name}</h2>
-                         <img src={g.image} alt="" />
-                         </div>
+                        <Link to = "/gamedetail">
+                            <Gamecard name={g.name} image={g.image} rating={g.rating}/>
+                        </Link>
                         )
                     })
                 }

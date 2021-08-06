@@ -40,15 +40,17 @@ router.get('/videogames', async (req, res) => {
             
                     }
         })
-        return res.send(games);   //puedo hacerle un slice con dos parametros variables mathrandom  
+        return res.send(games);   
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
-        //deberia hacer un axios a la api, me traigo los matches, y luego con un for limito la cantidad a 15
+        //deberia hacer un axios a la api, me traigo los matches, y luego con un slice limito la cantidad a 15
         try{
             let fifteenGames = await axios.get(`${URL}games?search=${name}&key=${API_KEY}`);
             if(fifteenGames.data.results.length !== 0){
-                console.log(fifteenGames.data.results.length);
-                return res.send(fifteenGames.data.results);
+                
+                let fifteen =  fifteenGames.data.results.slice(0 , 15);  
+                console.log(fifteen.length);
+                return res.send(fifteen);
 
             } else if (fifteenGames.data.results.length === 0){
                 return res.send('There is no game with that name');

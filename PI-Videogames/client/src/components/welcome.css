@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -29,10 +30,11 @@
     border-bottom: 5px solid rgb(47, 255, 57);
     border-radius: 50px;
     color: #e3eef5;
-    font-size: 1.4rem;
     box-shadow: rgb(77, 133, 236) 0 -1px 7px 1px, inset rgb(233, 66, 122) 0 -1px 9px, rgb(226, 120, 33) 0 2px 12px;
-
+    
 }
+
+
 .btn1 {
     background-color: #210648;
     width: 20vh;
@@ -40,6 +42,23 @@
     margin-top: 10vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
-    
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+    font-size: 4rem;
+    line-height: 100%;
+}
+h4 {
+    font-family: 'Staatliches', cursive;
+    font-size: 1.5rem;
+    margin: 3vh;
+}
+
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    text-align: justify;
 }
 
