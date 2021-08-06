@@ -2,7 +2,9 @@
 import axios from 'axios';
 export const ADD_VIDEOGAME = "ADD_VIDEOGAME";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
+export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME";
 
+const URL = 'https://api.rawg.io/api/';
 
 export function addVideogame (payload) {
     return {
@@ -17,6 +19,19 @@ export function getVideogames() {
        .then((games) => {
            dispatch({
                type: GET_VIDEOGAMES,
+               payload: games.data
+           })
+       })
+    }
+}
+
+export function searchVideogame(name) {
+    return function (dispatch) {
+       return axios.get(`http://localhost:3001/videogames?name=${name}`) // consulto al servidor 
+        //   return axios.get(`${URL}games?search=${name}&key=83ee0108f52c4c0cb24a962648dc5ee9`) 
+       .then((games) => {
+           dispatch({
+               type: SEARCH_VIDEOGAME,
                payload: games.data
            })
        })

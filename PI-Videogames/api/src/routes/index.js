@@ -48,7 +48,19 @@ router.get('/videogames', async (req, res) => {
             let fifteenGames = await axios.get(`${URL}games?search=${name}&key=${API_KEY}`);
             if(fifteenGames.data.results.length !== 0){
                 
-                let fifteen =  fifteenGames.data.results.slice(0 , 15);  
+                // let fifteen =  fifteenGames.data.results.slice(0 , 15);  
+                let fifteen = fifteenGames.data.results.map( (g) => {
+                    return {
+                        id: g.id,
+                        name: g.name,
+                        image: g.background_image,
+                        description: g.description, //description solo figura en el endpoint de id de la api
+                        released: g.released,
+                        rating: g.rating,
+                        platforms: g.platforms
+                    }
+                })
+                fifteen = fifteen.slice(0, 15)
                 console.log(fifteen.length);
                 return res.send(fifteen);
 

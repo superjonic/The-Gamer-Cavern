@@ -7,12 +7,14 @@ import './games.css'
 export default function Games (){
 
 const videogames = useSelector((state) => state.videogames)
-var nineResults = videogames.slice(0, 9)
-console.log(nineResults)
+
+var n1 = Math.floor(Math.random()* 6);
+var n2 = n1 + 9;
+var nineResults = videogames.slice(n1, n2)
+console.log(videogames)
 
     return (
         <div className = "cards">
-        
                 {
                     nineResults.map((g) => {
                         return (

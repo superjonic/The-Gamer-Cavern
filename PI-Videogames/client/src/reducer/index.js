@@ -1,4 +1,5 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES } from "../actions";
+import { ADD_VIDEOGAME, GET_VIDEOGAMES, SEARCH_VIDEOGAME  } from "../actions";
+
 
 const initialState = {
   videogames: [],       
@@ -17,7 +18,13 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
         return {
           ...state,
           videogames: action.payload
-        }  
+        }
+        
+      case SEARCH_VIDEOGAME:
+          return {
+            ...state,
+            videogames: action.payload
+          }      
         
         default:
         return state;
