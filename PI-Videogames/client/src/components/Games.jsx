@@ -23,7 +23,7 @@ console.log(nineResults)
                     })
                 }
            
-            <Gamecard />
+            
         </div>
     )
 }
