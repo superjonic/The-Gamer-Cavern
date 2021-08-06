@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css';
+import Search from './Search';
 
 export default function Nav(){
     return (
         <header className = " header">
             <h1>The Gamer Cavern</h1>
-            
+            <Search />
             
             <div>
-            <Link to = '/createVideogame'>  
+            <Link to = '/createvideogame'>  
             <button className = " btn">Create Videogame</button>
             </Link>  
             </div>

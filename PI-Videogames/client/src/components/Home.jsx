@@ -7,7 +7,7 @@ export default function Home () {
     return (
         <div>
             <Nav />
-            <h1>Estoy en el Home </h1>
+            
             <Games />
 
         </div>
