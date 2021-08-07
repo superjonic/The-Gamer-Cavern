@@ -7,13 +7,17 @@ import FilterZone from './FilterZone';
 export default function Nav(){
     return (
         <header className = " header">
-            <h1>The Gamer Cavern</h1>
-            <Search />
-            <FilterZone />
+            <div className="titlee">
+                <h1>The Gamer Cavern</h1>
+            </div>
+            <div>             
+                <Search />
+                <FilterZone />
+            </div>       
             <div>
-            <Link to = '/createvideogame'>  
-            <button className = " btn">Create Videogame</button>
-            </Link>  
+                <Link to = '/createvideogame'>  
+                <button className = "btn">Create Videogame</button>
+                </Link>  
             </div>
 
         </header>

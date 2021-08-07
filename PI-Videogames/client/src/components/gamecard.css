@@ -3,7 +3,8 @@
     height: 50vh;
     width: 50vh;
     margin: 40px;
-    border: solid 2px black;
+    border: solid 2px rgb(255, 255, 255);
+    color: white;
     
    
 }
