@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 .header {
     display: flex;
@@ -10,16 +10,29 @@
     height: 15vh;
     background: linear-gradient(45deg, rgb(20, 3, 48) 0%, rgba(99, 7, 94, 30%) 55%, rgba(34, 7, 76) 100%);
     background: linear-gradient(45deg, rgb(20, 3, 48) 15%, rgba(99, 7, 94, 30%) 45%, rgba(34, 7, 76) 90%);
-    background: linear-gradient(45deg, rgb(20, 3, 48) 25%, rgba(51, 5, 49, 50%) 40%, rgba(34, 7, 76) 80%);
+    background: linear-gradient(45deg, rgb(20, 3, 48) 25%, rgba(51, 5, 49, 50%) 40%, RGB(21, 23, 43));
     color: #ffffff;
     position: relative;
+    
+    box-shadow:  rgb(233, 147, 66) 0 -1px 15px, rgb(255, 144, 18) 0 2px 0px;
+  
     
     /* box-shadow: rgb(155, 217, 221) 0 -1px 20px 10px; */
 }
 
+
 .titlee{
-    border: 1px solid black;
     color: #d2e4e6 ;
+    margin-top: 15px;
+    width: 70vh;
+    
+}
+
+.filter{
+    width: 60vh;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
     
 }
 .btn {

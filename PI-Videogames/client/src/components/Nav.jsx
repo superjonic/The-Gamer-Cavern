@@ -10,7 +10,7 @@ export default function Nav(){
             <div className="titlee">
                 <h1>The Gamer Cavern</h1>
             </div>
-            <div>             
+            <div className ="filter">             
                 <Search />
                 <FilterZone />
             </div>       
