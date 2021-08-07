@@ -14,6 +14,7 @@ var nineResults = videogames.slice(n1, n2)
 console.log(videogames)
 
     return (
+        <>
         <div className = "cards">
                 {
                     nineResults.map((g) => {
@@ -27,5 +28,6 @@ console.log(videogames)
            
             
         </div>
+        </>
     )
 }
