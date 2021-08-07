@@ -30,33 +30,48 @@
     border-bottom: 5px solid rgb(47, 255, 57);
     border-radius: 50px;
     color: #e3eef5;
-    box-shadow: rgb(77, 133, 236) 0 -1px 7px 1px, inset rgb(233, 66, 122) 0 -1px 9px, rgb(226, 120, 33) 0 2px 12px;
+    box-shadow: rgb(77, 133, 236) 0 -1px 7px 1px, inset rgb(233, 66, 122) 0 -1px 15px, rgb(226, 120, 33) 0 2px 12px;
     
 }
 
 
 .btn1 {
-    background-color: #210648;
+    background-color: transparent;
     width: 20vh;
-    color: white;
+    color: rgb(179, 187, 223);
+    border-radius: 5px;   
     margin-top: 10vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Staatliches', cursive;
+    font-size: 1.2em;
+    letter-spacing: 1px;
     cursor: pointer;
+    border: 1px solid #e78122;
+    box-shadow: rgb(77, 133, 236) 0 -1px 70px 1px, inset rgb(233, 66, 122) 0 -1px 1px, rgb(226, 120, 33) 0 2px 12px;
+    transition: width 1s, box-shadow 1s;
+}
+.btn1:hover{
+  width: 25vh;
+  box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
+
 }
 
 h1 {
     font-family: 'Staatliches', cursive;
     font-size: 4rem;
     line-height: 100%;
+    
 }
 h4 {
     font-family: 'Staatliches', cursive;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin: 3vh;
+    font-weight: 500;
+    letter-spacing: 2px;
+    
 }
 
 p {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sans-serif ;
     margin-left: 2vh;
     margin-right: 2vh;
     text-align: justify;

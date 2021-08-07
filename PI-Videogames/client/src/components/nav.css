@@ -8,8 +8,8 @@
     justify-content: space-evenly;
     width: 100%;
     height: 15vh;
-    background-color: rgb(14, 8, 48);
-    color: white;
+    background-color: #220848;
+    color: #675cd3;
     position: relative;
 }
 .btn {
