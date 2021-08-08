@@ -10,14 +10,17 @@ export default function Nav(){
             <div className="titlee">
                 <h1>The Gamer Cavern</h1>
             </div>
-            <div className ="filter">             
+            <div className ="searchcont">             
                 <Search />
-                <FilterZone />
-            </div>       
-            <div>
+            </div> 
+               
+            <div className ="filtercont">    
                 <Link to = '/createvideogame'>  
-                <button className = "btn">Create Videogame</button>
+                <button className = "btncreate">Create Videogame</button>
                 </Link>  
+            </div>
+            <div>
+                <FilterZone />   
             </div>
 
         </header>

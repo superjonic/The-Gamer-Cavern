@@ -1,7 +1,7 @@
 import React from 'react';
 import './gamecard.css';
 
-export default function Gamecard ({name, image, rating}){
+export default function Gamecard ({name, image, rating, id}){
 
     return (
         <div className = "card">

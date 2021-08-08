@@ -1,0 +1,37 @@
+.cont {
+    display: inline;
+    width: 250px;
+    margin-top: 10px;      
+   
+}
+
+.search{
+    border: none;
+    border-radius: 10px;
+    background-color: #4c4749;
+    width: 45vh;
+    height: 25px;
+    color: white;
+    padding-left: 10px;
+    
+}
+.search:focus{
+    outline: none;
+}
+
+.search:focus::placeholder {
+    color: transparent;
+  }
+
+.btnsearch{
+    background-color: #bc1a55;
+    width: 13vh;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 5px;
+    color: white;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
