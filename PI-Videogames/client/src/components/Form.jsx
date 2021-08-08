@@ -1,28 +1,66 @@
 import React from 'react';
 import './form.css';
+import { useState } from 'react';
 
 export default function Form () {
-
+    const [input, setInput] = useState({
+        name: '',
+        description: '',
+        released: '',
+        rating: '',
+        genre: [],
+        platforms: []    
+    })
+    function handleChange(e){    
+        setInput({       
+          ...input,
+          [e.target.name]: e.target.value
+        })
+    }
+    function handleSelect(e){
+        setInput({
+            ...input,
+            genre: [...input.genre, e.target.value]
+        })
+    }
+    function handleCheckbox(e){
+        const isChecked = e.target.checked;
+       if(isChecked){
+           setInput({
+               ...input,
+               platforms: [...input.platforms, e.target.value]
+           })
+       } 
+    console.log(e.target.checked)
+    }
+    console.log(input)
     return (
         <div className = "back">
+
             <form className = "form">
                 <h2 className ="title">Create Videogame</h2>
                 <div className = "input-container ic1">
-                    <input type="text" className ="input" placeholder = "Name"/>
+
+                    <input type="text" className ="input" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
                 </div>
                 <div className = "input-container ic1">
-                    <input type="text" className ="input" placeholder = "Description" />
+
+                    <input type="text" className ="input" name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
                 </div>
                 <div className = "input-container ic1">
-                    <input type="date" className ="input" placeholder = "Date" />
+
+                    <input type="date" className ="input" name = "released" value ={input.released} onChange={handleChange} placeholder = "Released" />
                 </div>
                 <div className = "input-container ic1">
-                   <input type="number" className ="input" placeholder = "Rating"/>
+
+                   <input type="number" className ="input" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
                 </div>
+
                 <div  className ="genres">
                     <div >
                     <span>Genre 1</span>     
-                        <select name="Genre" id="">
+                        <select name="genre" value ={input.genre} onChange ={handleSelect}>
+                            <option> -- select an option -- </option>
                             <option value="Action">Action</option>
                             <option value="Adventure">Adventure</option>
                             <option value="Drama">Drama</option>
@@ -33,7 +71,8 @@ export default function Form () {
                     </div>    
                     <div >
                     <span>Genre 2</span>     
-                        <select name="Genre" id="">
+                        <select name="genre" value ={input.genre} onChange ={handleSelect} >
+                            <option> -- select an option -- </option>
                             <option value="Fighting">Fighting</option>
                             <option value="Racing">Racing</option>
                             <option value="Family">Family</option>
@@ -44,10 +83,13 @@ export default function Form () {
                     </div>  
                 </div>  
                 <p className = "plat">Platforms</p> 
-                <div className = "platforms ">  
-                    <label><input type= "checkbox" value ="ps5"/> PS5 </label>
-                    <label><input type= "checkbox" value ="nintendo"/> Nintendo </label>
-                    <label><input type= "checkbox" value ="pc"/> PC </label>
+                <div className = "platforms">  
+                    <label><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleCheckbox}/> PS5 </label>
+                    <label><input type= "checkbox" value ="Nintendo" onChange ={handleCheckbox}/> Nintendo </label>
+                    <label><input type= "checkbox" value ="Pc" onChange ={handleCheckbox}/> PC </label>
+                    <label><input type= "checkbox" value ="Xbox" onChange ={handleCheckbox}/> Xbox </label>
+                    <label><input type= "checkbox" value ="PS4" onChange ={handleCheckbox}/> PS4 </label>
+                    
                 </div>  
                 <button className ="submit">Create</button>
 
