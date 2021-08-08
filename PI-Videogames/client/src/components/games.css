@@ -1,11 +1,16 @@
 body{
     overflow-x: hidden;
     background-color: rgb(12, 1, 15);
+   
+}
+.link {
+    text-decoration: none;
 }
 
 .cards{
     display: grid;
     justify-content: center;
     grid-template-columns: 30% 30% 30%; 
+    text-decoration: none;
    
 }

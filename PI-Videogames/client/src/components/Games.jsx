@@ -19,7 +19,7 @@ console.log(videogames)
                 {
                     nineResults.map((g) => {
                         return (
-                        <Link to = "/gamedetail">
+                        <Link to = "/gamedetail" className = "link">
                             <Gamecard name={g.name} image={g.image} rating={g.rating}/>
                         </Link>
                         )
