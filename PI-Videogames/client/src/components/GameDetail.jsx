@@ -10,20 +10,21 @@ export default function GameDetail (){
     //dispatchar una accion llamando a la ruta del back con el id o llamar al back con el id del juego
     const { id } = useParams()
    
-    console.log(game)
+    
     useEffect(() => {
         async function getVideogameById(id){
-            const game = await axios.get(`http://localhost:3001/videogames/${id}`)
-              setGame(game.data)
+            const videogame = await axios.get(`http://localhost:3001/videogames/${id}`)
+              setGame(videogame.data)
            }
         getVideogameById(id)
     },[])
-    console.log(id)
+    
+    console.log(game)
     return (
             <div>
                 
               {
-                  game ?
+                  Object.keys(game).length !== 0 ?
                   <div>
                     <div className ="tit"> 
                         <h1 >{game.name}</h1>
@@ -36,8 +37,8 @@ export default function GameDetail (){
                         
                     </div>
                     <div className ="contextra">
-                        <h2>{game.rating}</h2   >
-                        {game.genres.map((genre) => {
+                        <h2>{game.rating}</h2>
+                         {game.genres.map((genre) => {
                             return <p>{genre.name}</p>
                         })}
                     </div> 

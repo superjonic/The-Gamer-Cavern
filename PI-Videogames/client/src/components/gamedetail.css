@@ -21,14 +21,21 @@
   color: rgb(234, 250, 249);
   display: flex;
   justify-content: center;
+  margin-right: 10vh;
+  
+}
+.contback{
+  display: flex;
+  align-items: center;
+  margin-left: 5vh;
   
 }
 
 .continfo{
   display: flex;
   justify-content: center;
-  margin-left: 50vh;
-  margin-right: 50vh;
+  margin-left: 40vh;
+  margin-right: 40vh;
 }
 .btnhome {
   background-color: transparent;
@@ -57,9 +64,3 @@ box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
   justify-content: space-evenly;
 }
 
-.contback{
-  display: flex;
-  align-items: center;
-  margin-left: 5vh;
-  
-}
