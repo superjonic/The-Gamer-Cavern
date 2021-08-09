@@ -16,7 +16,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/videogames', async (req, res) => {
+router.get('/videogames', async (req, res) => { //! me esta faltando traer los vg de la base de datos que el client crea
     const { name } = req.query;
     var games = []
     if(!name){
