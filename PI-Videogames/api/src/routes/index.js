@@ -118,15 +118,16 @@ router.get('/genres', async (req, res) => {
 router.post('/videogame', async (req, res) => {
     const {name, description, released, platforms, rating } = req.body    //aca van los datos que llegan desde el form
     console.log(req.body)
+    let platformString = platforms.join(', ')
     try{
         if(name && description && platforms){
             const newGame = await Videogame.create({
                        id: uuidv4(), 
-                       name: name,
+                       name,
                        description,
                        released,            //OJO released tiene que llegar en formato numero sino se rompe
                        rating,
-                       platforms
+                       platforms: platformString
             })
              return res.send(newGame)
         }

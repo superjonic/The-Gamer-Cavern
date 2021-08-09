@@ -7,9 +7,14 @@ export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME";
 const URL = 'https://api.rawg.io/api/';
 
 export function addVideogame (payload) {
-    return {
-        type: ADD_VIDEOGAME,
-        payload
+    return function (dispatch){
+        return axios.post('http://localhost:3001/videogame')
+        .then((game) => {
+            dispatch({
+                type: ADD_VIDEOGAME,
+                payload: game
+            })
+        })
     }
 }
 

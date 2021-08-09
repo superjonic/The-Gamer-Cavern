@@ -1,6 +1,9 @@
 import React from 'react';
 import './form.css';
+import axios from 'axios';
 import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { addVideogame } from '../actions';
 
 export default function Form () {
     const [input, setInput] = useState({
@@ -11,6 +14,8 @@ export default function Form () {
         genre: [],
         platforms: []    
     })
+    // const dispatch = useDispatch();
+
     function handleChange(e){    
         setInput({       
           ...input,
@@ -34,10 +39,17 @@ export default function Form () {
     console.log(e.target.checked)
     }
     console.log(input)
+
+    async function handleSubmit(e){
+        e.preventDefault()
+        // dispatch(addVideogame(input))
+       await axios.post('http://localhost:3001/videogame', input)
+        
+    }
     return (
         <div className = "back">
 
-            <form className = "form">
+            <form className = "form" onSubmit={handleSubmit}>
                 <h2 className ="title">Create Videogame</h2>
                 <div className = "input-container ic1">
 
@@ -59,8 +71,8 @@ export default function Form () {
                 <div  className ="genres">
                     <div >
                     <span>Genre 1</span>     
-                        <select name="genre" value ={input.genre} onChange ={handleSelect}>
-                            <option> -- select an option -- </option>
+                        <select name="genre" id ="genre" value ={input.genre} onChange ={handleSelect}>
+                            <option value= ""> -- select an option -- </option>
                             <option value="Action">Action</option>
                             <option value="Adventure">Adventure</option>
                             <option value="Drama">Drama</option>
@@ -70,9 +82,9 @@ export default function Form () {
                         </select>
                     </div>    
                     <div >
-                    <span>Genre 2</span>     
-                        <select name="genre" value ={input.genre} onChange ={handleSelect} >
-                            <option> -- select an option -- </option>
+                    <label>Genre 2</label>     
+                        <select name="genre2" id ="genre2" value ={input.genre} onChange ={handleSelect} >
+                            <option value= ""> -- select an option -- </option>
                             <option value="Fighting">Fighting</option>
                             <option value="Racing">Racing</option>
                             <option value="Family">Family</option>

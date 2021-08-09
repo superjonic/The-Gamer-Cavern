@@ -2,8 +2,7 @@ import { ADD_VIDEOGAME, GET_VIDEOGAMES, SEARCH_VIDEOGAME  } from "../actions";
 
 
 const initialState = {
-  videogames: [],       
-  createdGames: []
+  videogames: []
 };
 
 function rootReducer (state = initialState, action) {     //Mati hace el order y filter en redux
@@ -12,7 +11,7 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
       case ADD_VIDEOGAME:
         return {
           ...state,
-          createdGames: [...state.createdGames, action.payload]
+          videogames: [...state.videogames, action.payload]
         }
       case GET_VIDEOGAMES:
         return {
