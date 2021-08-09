@@ -1,18 +1,49 @@
 .back {
-    align-items: center;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    color: white;
+    background-color: #0c010f;
+    
   }
 
-  .container {
-    background-color: #15172b;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 90vh;
-    padding: 20px;
-    width: 320px;
-    color: white;
-  }
+
+.image{
+  
+  max-width:800px;
+  max-height:500px;
+  width: auto;
+  height: auto;
+}
+.contimg{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+  
+.tit{
+  color: rgb(234, 250, 249);
+  display: flex;
+  justify-content: center;
+  
+}
+
+.continfo{
+  display: flex;
+  justify-content: center;
+  margin-left: 50vh;
+  margin-right: 50vh;
+}
+.btnhome {
+  background-color: transparent;
+  width: 20vh;
+  color: rgb(179, 187, 223);
+  border-radius: 5px;   
+  font-family: 'Staatliches', cursive;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid #e78122;
+  box-shadow: rgb(77, 133, 236) 0 -1px 70px 1px, inset rgb(233, 66, 122) 0 -1px 1px, rgb(226, 120, 33) 0 2px 12px;
+  transition: width 1s, box-shadow 1s;
+}
+.btnhome:hover{
+width: 25vh;
+box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
+}
