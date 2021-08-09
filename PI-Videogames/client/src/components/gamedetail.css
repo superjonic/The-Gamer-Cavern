@@ -6,8 +6,8 @@
 
 .image{
   
-  max-width:800px;
-  max-height:500px;
+  max-width:900px;
+  max-height:600px;
   width: auto;
   height: auto;
 }
@@ -46,4 +46,20 @@
 .btnhome:hover{
 width: 25vh;
 box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
+}
+
+.contextra {
+  display: flex;
+  margin-left: 65vh;
+  margin-right: 65vh;
+  padding-top: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.contback{
+  display: flex;
+  align-items: center;
+  margin-left: 5vh;
+  
 }
