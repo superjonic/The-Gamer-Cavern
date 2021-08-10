@@ -14,3 +14,16 @@ body{
     text-decoration: none;
      
 }
+.pagingcont{
+    width: 20px;  
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2vh ;
+}
+.pagbtn{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
