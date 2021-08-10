@@ -2,3 +2,16 @@
     margin: 0;
     padding: 0;
 } 
+.pagingcont{
+    width: 20px;  
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.paging{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 2px;
+    cursor: pointer;
+}

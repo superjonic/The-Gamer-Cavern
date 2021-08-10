@@ -11,11 +11,12 @@ const videogames = useSelector((state) => state.videogames)
 var n1 = Math.floor(Math.random()* 6);
 var n2 = n1 + 9;
 var nineResults = videogames.slice(n1, n2)
-console.log(videogames)
+console.log(videogames)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
 
     return (
         <>
         <div className = "cards">
+    
                 {
                     nineResults.map((g) => {
                         return (

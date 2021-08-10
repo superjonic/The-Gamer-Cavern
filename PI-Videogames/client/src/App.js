@@ -5,15 +5,17 @@ import Home from './components/Home';
 import Form from './components/Form';
 import GameDetail from './components/GameDetail';
 import {useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { getVideogames } from './actions';
 
 
 
 function App() {
-  
+ 
+
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     dispatch(getVideogames())
   })

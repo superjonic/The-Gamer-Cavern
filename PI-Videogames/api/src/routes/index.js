@@ -28,7 +28,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
         
         games = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results, games5.data.results)
          
-        games = games.map((g) => {            
+        games = games.map((g) => {             //games es la sum de 5 apicalls,   
             return { 
                     id: g.id,
                     name: g.name,
@@ -39,16 +39,31 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                     platforms: g.platforms
             
                     }
-        })
-        return res.send(games);   
+        })  //agregar los videogames creados por el cliente, traer desde nuestra base de datos
+        var clientgames = await Videogame.findAll();
+        var allGames = clientgames.concat(games)
+        console.log(allGames.length)
+        return res.send(allGames);   
     }
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
         //deberia hacer un axios a la api, me traigo los matches, y luego con un slice limito la cantidad a 15
+        //tambien deberia buscar en la base de datos y traerlos, agregarlos a la devolucion
         try{
+            //deberia agregar un find a la db
+            const dbGames = await Videogame.findOne({
+                where: {
+                    name: name
+                }
+            })
             let fifteenGames = await axios.get(`${URL}games?search=${name}&key=${API_KEY}`);
-            if(fifteenGames.data.results.length !== 0){
+           
+            // if(fifteenGames.data.results.length !== 0){
+                //.results es un array de obj, hay que hacerle un map
+            //fifteenGames.data.results.map((game) => game.name)    
+            // var nameResults = fifteenGames.data.results.map((game) => game.name);  // array de names 
+            //nameResults.include(name.toLowerCase()) no funciono
+            if (fifteenGames.data.results.length !== 0){
                 
-                // let fifteen =  fifteenGames.data.results.slice(0 , 15);  
                 let fifteen = fifteenGames.data.results.map( (g) => {
                     return {
                         id: g.id,
@@ -61,15 +76,15 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                     }
                 })
                 fifteen = fifteen.slice(0, 15)
-                console.log(fifteen.length);
-                return res.send(fifteen);
+                
+                 res.send(fifteen); //aca estoy enviando la resp de la api sin consultar la db
 
-            } else if (fifteenGames.data.results.length === 0){
-                return res.send('There is no game with that name');
+            } else {
+                return res.send(dbGames);
              }
         }
         catch(error){
-            res.sendStatus(404)
+            res.sendStatus(404).send('There is no game with that name')
         }
         // for(let i = 0; i <= 15; i++){
         //     fifteenGames[i]
@@ -85,10 +100,15 @@ router.get('/videogames/:id', async (req, res) => {
     //     return res.send('the game is not on the list')
     // }
     try {        
-        if(id){
+        if(id.length < 10){
             const game = await axios.get(`${URL}games/${id}?key=${API_KEY}`)
-            console.log(game.data)
+            
             return res.send(game.data)
+        }else {
+            const dbGame = await Videogame.findByPk(id)
+            console.log(dbGame.dataValues)
+
+            return res.send(dbGame.dataValues)
         }
     }    
     catch(error){
@@ -116,7 +136,7 @@ router.get('/genres', async (req, res) => {
 })
 
 router.post('/videogame', async (req, res) => {
-    const {name, description, released, platforms, rating } = req.body    //aca van los datos que llegan desde el form
+    const {name, description, released, platforms, rating, genres } = req.body    //aca van los datos que llegan desde el form
     console.log(req.body)
     let platformString = platforms.join(', ')
     try{
@@ -129,6 +149,7 @@ router.post('/videogame', async (req, res) => {
                        rating,
                        platforms: platformString
             })
+            newGame.setGenres(genres)
              return res.send(newGame)
         }
     }

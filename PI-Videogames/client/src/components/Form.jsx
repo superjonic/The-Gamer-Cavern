@@ -44,7 +44,14 @@ export default function Form () {
         e.preventDefault()
         // dispatch(addVideogame(input))
        await axios.post('http://localhost:3001/videogame', input)
-        
+        setInput({
+            name: '',
+            description: '',
+            released: '',
+            rating: '',
+            genres: [],
+            platforms: []    
+        })
     }
     return (
         <div className = "back">

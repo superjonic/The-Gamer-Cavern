@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react';
+import React from 'react';
 import FilterBy from './Filterby';
 import OrderBy from './OrderBy';
 import { useState } from 'react';
