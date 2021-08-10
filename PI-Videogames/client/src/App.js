@@ -9,12 +9,15 @@ import { useDispatch } from 'react-redux';
 import { getVideogames } from './actions';
 
 
+
 function App() {
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getVideogames())
   })
+  
   return (
     <BrowserRouter>
       <Switch>

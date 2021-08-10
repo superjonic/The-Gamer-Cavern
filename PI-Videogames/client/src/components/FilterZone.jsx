@@ -18,7 +18,6 @@ export default function FilterZone(){
             {
                 toggle ?
                 <div className = "zone"> 
-                    <h3>Filter Zone</h3> 
                     <FilterBy />
                     <OrderBy />
                 </div>

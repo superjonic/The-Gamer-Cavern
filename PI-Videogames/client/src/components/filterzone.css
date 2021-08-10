@@ -1,10 +1,13 @@
 .zone{
     display: flex;
     width: 300px;
-    height: 100px;
-    background-color: rgb(22, 2, 27);
+    height: 250px;
+    background-color: rgb(20, 3, 27);
     opacity: 80%;
+    border-radius: 10px;
+    border: 1px solid orange;
     color: rgb(230, 222, 222);
+    justify-content: center;
 }
 
 .btnzone {
@@ -19,4 +22,5 @@
     border: 1px solid #e78122;
     box-shadow: rgb(77, 133, 236) 0 -1px 70px 1px, inset rgb(233, 66, 122) 0 -1px 1px, rgb(226, 120, 33) 0 2px 12px;
     transition: width 1s, box-shadow 1s;
+    
 }

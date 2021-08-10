@@ -1,4 +1,4 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES, SEARCH_VIDEOGAME  } from "../actions";
+import { ADD_VIDEOGAME, GET_VIDEOGAMES, SEARCH_VIDEOGAME, ORDER_BYNAME  } from "../actions";
 
 
 const initialState = {
@@ -24,7 +24,12 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
             ...state,
             videogames: action.payload
           }      
-        
+       
+      case ORDER_BYNAME:
+        return {
+          ...state,
+          videogames: state.videogames.sort((a, b) => a.name.localeCompare(b.name))
+        }    
         default:
         return state;
     }

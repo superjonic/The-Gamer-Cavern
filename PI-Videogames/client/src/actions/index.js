@@ -3,6 +3,7 @@ import axios from 'axios';
 export const ADD_VIDEOGAME = "ADD_VIDEOGAME";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME";
+export const ORDER_BYNAME = "ORDER_BYNAME";
 
 const URL = 'https://api.rawg.io/api/';
 
@@ -44,3 +45,8 @@ export function searchVideogame(name) {
 }
 
 //ordenamiento puede ir aca
+export function orderByName(){
+    return {
+        type: ORDER_BYNAME
+    }
+}

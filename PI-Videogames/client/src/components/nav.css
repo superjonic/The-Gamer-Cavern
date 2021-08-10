@@ -45,15 +45,25 @@
 
 .filtercont {
     width: 60vh;
+    display: flex;
+    align-items: center;
     
+}  
 
-}
 .btncreate {
-    background-color: #bc1a55;
-    width: 18vh;
-    border-radius: 10px;
-    padding: 7px;
-    color: white;
-    border: none;
+    background-color: black;
+    width: 30vh;
+    height: 5vh;
+    color: rgb(179, 187, 223);
+    border-radius: 5px;   
+    font-family: 'Staatliches', cursive;
+    font-size: 1em;
+    letter-spacing: 2px;
     cursor: pointer;
+    border: 1px solid #e722d7;
+    box-shadow: rgb(77, 133, 236) 0 -1px 70px 1px, inset rgb(233, 66, 122) 0 -1px 1px, rgb(226, 120, 33) 0 2px 12px;
+   
+}
+.btncreate:hover{
+    border: 1px solid #bc1a55 ;
 }
