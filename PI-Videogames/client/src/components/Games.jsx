@@ -10,20 +10,29 @@ const videogames = useSelector((state) => state.videogames);
 const [n1, setN1] = useState(0);
 const [n2, setN2] = useState(9);
 
-console.log(n1)
-
 
 // var n1 = Math.floor(Math.random()* 6);   // => el math random del primer renderizado hacerlo en la primera vez action? reducer?
 // var n2 = n1 + 9;
 
 // var nineResults = videogames.slice(n1, n2)
 
-console.log(videogames)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
+console.log(videogames.length)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
+console.log(n1)
+console.log(n2)
 
-
-const nextPage = () => {
-    setN1(n1 + 10)
+const nextPage = () => {            //if llego al final vuelvo a comenzar la cuenta = if(n1 > videgames.length) n1 = 0
+  if(n1 < videogames.length){
+    setN1(n1 + 10)                  
     setN2(n2 + 10)
+  } else if(n1 > videogames.length || n2 > videogames.length) {
+      setN1(0)
+      setN2(9)
+  }
+}
+
+const prevPage = () => {
+    setN1(n1 - 10)
+    setN2(n2 - 10)
 }
 
 // funcion nextPage y funcion PreviousPage y pasarselas respectivamente a cada button
@@ -50,7 +59,7 @@ const nextPage = () => {
             
         </div>
         <div className ="pagingcont">
-                <button className ="pagbtn" >previous</button>
+                <button className ="pagbtn" onClick ={prevPage} >previous</button>
                 <button className ="pagbtn" onClick ={nextPage}> next</button>
         </div>
         </>
