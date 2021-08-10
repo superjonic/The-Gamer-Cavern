@@ -113,7 +113,7 @@ router.get('/videogames/:id', async (req, res) => {
     }    
     catch(error){
         console.log(error)
-        res.send('the game is not on the list');
+       
     }     
     
 })

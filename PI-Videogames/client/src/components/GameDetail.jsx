@@ -20,13 +20,13 @@ export default function GameDetail (){
     }, [])
     
     console.log(game)
-    var arr = []
-    arr.push(Object.keys(game))
+    // var arr = []
+    // arr.push(Object.keys(game))
     return (
             <div>
                 
               {
-                  Object.keys(game).length !== 0 ?  //esta mal esta expresion, no funciona, siempre es dist de cero
+              Object.keys(game).length !== 0  ?        //esta mal esta expresion, no funciona, siempre es dist de cero
                   <div>
                     <div className ="tit"> 
                         <h1 >{game.name}</h1>
