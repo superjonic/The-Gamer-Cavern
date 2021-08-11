@@ -44,10 +44,13 @@ export default function GameDetail (){
                     </div>
                     <div className ="contextra">
                         <h2>{game.rating}</h2>
-                         {/* {game.genres.map((genre) => {      //me anda con el gamedetail creado pero no me muestra los genres del existente
-                            return <p>{genre.name}</p>
-                        })} */}
+                         {game.platforms.map((plat) => {      
+                            return <p>{plat.platform.name}</p>
+                        })}
                     </div> 
+                        <div className ="contextra">
+                            <h3> Released {game.released}</h3>
+                        </div>   
                         <div className ="contimg">
                             <img src={game.background_image} alt="imagen" className ="image" /> 
                         </div>
