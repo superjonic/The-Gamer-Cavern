@@ -36,12 +36,12 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                     description: g.description, //description solo figura en el endpoint de id de la api
                     released: g.released,
                     rating: g.rating,
-                    platforms: g.platforms
-            
+                    platforms: g.platforms,
+                    genres: g.genres
                     }
         })  //agregar los videogames creados por el cliente, traer desde nuestra base de datos
         var clientgames = await Videogame.findAll();
-        var allGames = clientgames.concat(games)
+        var allGames = games.concat(clientgames)
         console.log(allGames.length)
         return res.send(allGames);   
     }

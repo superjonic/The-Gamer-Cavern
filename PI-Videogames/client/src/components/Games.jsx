@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Gamecard from './GameCard';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'; //equivale a mapStateToProps
@@ -35,6 +35,7 @@ const prevPage = () => {
     setN2(n2 - 10)
 }
 
+
 // funcion nextPage y funcion PreviousPage y pasarselas respectivamente a cada button
 // la funcion deberia afectar al state de redux? no podria manejarlo con state local
 
@@ -50,7 +51,7 @@ const prevPage = () => {
                     videogames.map((g) => {
                         return (
                         <Link to ={`/gamedetail/${g.id}`} className = "link">
-                            <Gamecard name={g.name} image={g.image} rating={g.rating} id={g.id} key={g.id}/>
+                            <Gamecard name={g.name} image={g.image} rating={g.rating} id={g.id} genres={g.genres} key={g.id}/>
                         </Link>
                         )
                     }).slice(n1, n2)      
@@ -59,8 +60,8 @@ const prevPage = () => {
             
         </div>
         <div className ="pagingcont">
-                <button className ="pagbtn" onClick ={prevPage} >previous</button>
-                <button className ="pagbtn" onClick ={nextPage}> next</button>
+                <button className ="pagbtn" onClick ={prevPage} > &lt; </button>
+                <button className ="pagbtn" onClick ={nextPage}> &gt; </button>
         </div>
         </>
     )
