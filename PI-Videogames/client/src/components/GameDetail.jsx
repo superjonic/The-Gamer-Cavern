@@ -6,17 +6,20 @@ import axios from 'axios';
 
 
 export default function GameDetail (){
-    const [game, setGame] = useState({})
+    const [game, setGame] = useState({});
     //dispatchar una accion llamando a la ruta del back con el id o llamar al back con el id del juego
     const { id } = useParams()
    
+    function getVideogameById(id){
+         axios.get(`http://localhost:3001/videogames/${id}`)
+            .then((game) => {
+                setGame(game.data)
+            } )
+            
+       }
     
     useEffect(() => {
-        async function getVideogameById(id){
-            const videogame = await axios.get(`http://localhost:3001/videogames/${id}`)
-              setGame(videogame.data)
-           }
-        getVideogameById(id)
+        getVideogameById(id) 
     }, [])
     
     console.log(game)
@@ -26,6 +29,7 @@ export default function GameDetail (){
             <div>
                 
               {
+                  
               Object.keys(game).length !== 0  ?        //esta mal esta expresion, no funciona, siempre es dist de cero
                   <div>
                     <div className ="tit"> 
@@ -51,7 +55,7 @@ export default function GameDetail (){
                             <p>{game.description}</p>
                         </div> 
                   </div>
-                  : <h2> There is no game with that id. Sorry!</h2>
+                  : <h2>Loading</h2>
               }
             </div> 
     )

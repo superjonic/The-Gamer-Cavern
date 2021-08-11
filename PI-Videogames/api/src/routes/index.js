@@ -72,6 +72,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                         description: g.description, //description solo figura en el endpoint de id de la api
                         released: g.released,
                         rating: g.rating,
+                        genres: g.genres,
                         platforms: g.platforms
                     }
                 })
@@ -137,19 +138,21 @@ router.get('/genres', async (req, res) => {
 
 router.post('/videogame', async (req, res) => {
     const {name, description, released, platforms, rating, genres } = req.body    //aca van los datos que llegan desde el form
-    console.log(req.body)
+    console.log(genres)
     let platformString = platforms.join(', ')
+    let genresString = genres.join(', ')
     try{
         if(name && description && platforms){
-            const newGame = await Videogame.create({
+            const newGame = await Videogame.create({   //para agregarle un genre es necesario el id, metodo sequelize findPk
                        id: uuidv4(), 
                        name,
                        description,
                        released,            //OJO released tiene que llegar en formato numero sino se rompe
                        rating,
-                       platforms: platformString
+                       platforms: platformString,
+                      
             })
-            newGame.setGenres(genres)
+            newGame.setGenres(genresString)
              return res.send(newGame)
         }
     }

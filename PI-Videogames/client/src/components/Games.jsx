@@ -16,9 +16,8 @@ const [n2, setN2] = useState(9);
 
 // var nineResults = videogames.slice(n1, n2)
 
-console.log(videogames.length)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
-console.log(n1)
-console.log(n2)
+console.log(videogames)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
+
 
 const nextPage = () => {            //if llego al final vuelvo a comenzar la cuenta = if(n1 > videgames.length) n1 = 0
   if(n1 < videogames.length){

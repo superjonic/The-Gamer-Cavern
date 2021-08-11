@@ -1,0 +1,7 @@
+.filtzone{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+
+}

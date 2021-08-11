@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './filterby.css';
 
 export default function FilterBy() {
     const videogames = useSelector((state) => state.videogames)
@@ -9,7 +10,10 @@ export default function FilterBy() {
     return (
         <div>                   
             <h4>Filter By</h4>
-            
+            <div className="filtzone">
+                <button>Genre</button>
+                <button>Games made by you</button>
+            </div>
         </div>
     )
 }

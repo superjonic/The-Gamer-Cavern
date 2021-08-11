@@ -1,10 +1,10 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { orderByName } from '../actions';
+import { orderByNameAsc, orderByNameDesc } from '../actions';
+import './orderby.css';
 
 export default function OrderBy () {
-    //puedo conectar este componente al store global de redux y hacer el ordenamiento aca
+  
     
     const dispatch = useDispatch();
 
@@ -12,15 +12,22 @@ export default function OrderBy () {
 
     //ordenar alfabeticamente, un sort.  ascendente y descendente
     //ordenar por rating ascedente y descendente
-    function orderAsc(){
-        dispatch(orderByName())
+    const orderAsc = () =>{
+        dispatch(orderByNameAsc())
+    }
+    const orderDesc = () => {
+        dispatch(orderByNameDesc())
     }
 
     return (
         <div>
             <h4>Order By</h4>
-            <button onClick = {orderAsc()}>A-Z</button>
-            
+            <div className ="orderzone">
+                <button onClick = {orderAsc()}>A - Z</button>
+                <button onClick= {orderDesc()} >Z - A</button>
+                <button>Best Rating</button>
+                <button>Less Rating</button>
+            </div>
         </div>
     )
 }
