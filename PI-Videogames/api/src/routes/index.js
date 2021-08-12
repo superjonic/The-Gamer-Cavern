@@ -8,7 +8,7 @@ const { API_KEY } = process.env;
 const { Videogame, Genre } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 const URL = 'https://api.rawg.io/api/';
-
+const { Op } = require ('sequelize')
 const router = Router();
 
 
@@ -41,6 +41,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                     }
         })  //agregar los videogames creados por el cliente, traer desde nuestra base de datos
         var clientgames = await Videogame.findAll();
+        console.log(clientgames)
         var allGames = games.concat(clientgames)
         console.log(allGames.length)
         return res.send(allGames);   
@@ -50,18 +51,24 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
         //tambien deberia buscar en la base de datos y traerlos, agregarlos a la devolucion
         try{
             //deberia agregar un find a la db
-            const dbGames = await Videogame.findOne({
-                where: {
-                    name: name
+            const dbGames = await Videogame.findAll({
+                where: {                            //op ilike, que incluya la string que me viene por query
+                    name: {
+                        [Op.iLike] :`%${name}%`
+                    }
                 }
             })
+            console.log(dbGames)
+            //dbGames.map( (g) => {
+            //    return {
+            //      id: g.id,
+            //}     name: g.name,
+            //      description: g.description,
+            //      rating: g.rating,
+           // })    platforms: g.platforms
+
+
             let fifteenGames = await axios.get(`${URL}games?search=${name}&key=${API_KEY}`);
-           
-            // if(fifteenGames.data.results.length !== 0){
-                //.results es un array de obj, hay que hacerle un map
-            //fifteenGames.data.results.map((game) => game.name)    
-            // var nameResults = fifteenGames.data.results.map((game) => game.name);  // array de names 
-            //nameResults.include(name.toLowerCase()) no funciono
             if (fifteenGames.data.results.length !== 0){
                 
                 let fifteen = fifteenGames.data.results.map( (g) => {
@@ -78,7 +85,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                 })
                 fifteen = fifteen.slice(0, 15)
                 
-                 res.send(fifteen); //aca estoy enviando la resp de la api sin consultar la db
+                 return res.send(fifteen); //aca estoy enviando la resp de la api sin consultar la db
 
             } else {
                 return res.send(dbGames);
@@ -150,7 +157,7 @@ router.post('/videogame', async (req, res) => {
                        released,            //OJO released tiene que llegar en formato numero sino se rompe
                        rating,
                        platforms: platformString,  //aca me esta faltando la relacion de las dos tablas
-                       genres: []                      
+                                            
             })
             newGame.addGenres(genresString)
              return res.send(newGame)

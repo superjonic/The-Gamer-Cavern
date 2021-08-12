@@ -2,8 +2,10 @@ import React from 'react';
 import './form.css';
 import axios from 'axios';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { addVideogame } from '../actions';
+
 
 export default function Form () {
     const [input, setInput] = useState({
@@ -11,7 +13,7 @@ export default function Form () {
         description: '',
         released: '',
         rating: '',
-        genre: [],
+        genres: [],
         platforms: []    
     })
     // const dispatch = useDispatch();
@@ -25,7 +27,7 @@ export default function Form () {
     function handleSelect(e){
         setInput({
             ...input,
-            genre: [...input.genre, e.target.value]
+            genres: [...input.genres, e.target.value]
         })
     }
     function handleCheckbox(e){
@@ -78,7 +80,7 @@ export default function Form () {
                 <div  className ="genres">
                     <div >
                     <span>Genre 1</span>     
-                        <select name="genre" id ="genre" value ={input.genre} onChange ={handleSelect}>
+                        <select name="genres" id ="genres" value ={input.genres} onChange ={handleSelect}>
                             <option value= ""> -- select an option -- </option>
                             <option value="Action">Action</option>
                             <option value="Adventure">Adventure</option>
@@ -90,7 +92,7 @@ export default function Form () {
                     </div>    
                     <div >
                     <label>Genre 2</label>     
-                        <select name="genre2" id ="genre2" value ={input.genre} onChange ={handleSelect} >
+                        <select name="genres" id ="genres" value ={input.genres} onChange ={handleSelect} >
                             <option value= ""> -- select an option -- </option>
                             <option value="Fighting">Fighting</option>
                             <option value="Racing">Racing</option>
@@ -109,8 +111,14 @@ export default function Form () {
                     <label><input type= "checkbox" value ="Xbox" onChange ={handleCheckbox}/> Xbox </label>
                     <label><input type= "checkbox" value ="PS4" onChange ={handleCheckbox}/> PS4 </label>
                     
-                </div>  
+                </div> 
+                
                 <button className ="submit">Create</button>
+                        <div className ="contbackhome">
+                            <Link to= "/home">
+                            <button className ="backhome">Home</button>
+                            </Link>
+                        </div>
 
 
 

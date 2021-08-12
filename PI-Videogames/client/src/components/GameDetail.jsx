@@ -42,21 +42,23 @@ export default function GameDetail (){
                         </div>
                         
                     </div>
-                    <div className ="contextra">
-                        <h2>{game.rating}</h2>
+                    <div className ="contplat">
+                        <h2>Platforms: </h2>
                          {game.platforms.map((plat) => {      
                             return <p>{plat.platform.name}</p>
                         })}
                     </div> 
-                        <div className ="contextra">
-                            <h3> Released {game.released}</h3>
-                        </div>   
+                         
                         <div className ="contimg">
                             <img src={game.background_image} alt="imagen" className ="image" /> 
                         </div>
                         <div className="continfo">
                             <p>{game.description}</p>
                         </div> 
+                        <div className ="contextra">
+                            <h2>Released: {game.released}</h2>
+                            <h2>Rating: {game.rating}</h2>
+                        </div>  
                   </div>
                   : <h2>Loading</h2>
               }

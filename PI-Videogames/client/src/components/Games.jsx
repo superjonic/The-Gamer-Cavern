@@ -2,13 +2,21 @@ import React, { useState, useEffect } from 'react';
 import Gamecard from './GameCard';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'; //equivale a mapStateToProps
-import './games.css'
+import './games.css';
+import { useDispatch} from 'react-redux';
+import { getVideogames } from '../actions/index';
 
 export default function Games (){
 const videogames = useSelector((state) => state.videogames);  
-  
+const dispatch = useDispatch();
+
 const [n1, setN1] = useState(0);
 const [n2, setN2] = useState(9);
+
+  
+  useEffect(() => {
+    dispatch(getVideogames())
+  },[])
 
 
 // var n1 = Math.floor(Math.random()* 6);   // => el math random del primer renderizado hacerlo en la primera vez action? reducer?

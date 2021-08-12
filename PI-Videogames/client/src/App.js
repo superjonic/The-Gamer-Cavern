@@ -4,31 +4,11 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Form from './components/Form';
 import GameDetail from './components/GameDetail';
-import {useEffect} from 'react';
-import { useDispatch} from 'react-redux';
-import { getVideogames } from './actions';
-import axios from 'axios';
+
 
 
 
 function App() {
- 
-
-  const dispatch = useDispatch();
-
-  
-  useEffect(() => {
-    dispatch(getVideogames())
-  })
-
-  // function getGenres(){
-  //    axios.get('http://localhost:3001/genres')
-  // }
-
-  // useEffect(() => {
-  //   getGenres()
-  // })
-  
 
   return (
     <BrowserRouter>

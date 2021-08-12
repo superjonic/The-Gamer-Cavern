@@ -19,7 +19,7 @@
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 90vh;
+    height: 95vh;
     padding: 20px;
     width: 380px;
   }
@@ -102,4 +102,28 @@
   color: rgb(210, 228, 230);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 10px;
+}
+
+.backhome {
+  background-color: transparent;
+  width: 10vh;
+  color: rgb(179, 187, 223);
+  border-radius: 5px;   
+  font-family: 'Staatliches', cursive;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid #e78122;
+  box-shadow: rgb(77, 133, 236) 0 -1px 70px 1px, inset rgb(233, 66, 122) 0 -1px 1px, rgb(226, 120, 33) 0 2px 12px;
+  transition: width 1s, box-shadow 1s;
+}
+.backhome:hover{
+  width: 25vh;
+  box-shadow: rgb(236, 77, 125) 0 -1px 20px 10px;
+  }
+.contbackhome{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  
 }

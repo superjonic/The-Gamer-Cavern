@@ -1,7 +1,3 @@
-.back {
-    background-color: #0c010f;
-    
-  }
 
 
 .image{
@@ -22,6 +18,7 @@
   display: flex;
   justify-content: center;
   margin-right: 10vh;
+  margin-top: 3px;
   
 }
 .contback{
@@ -57,10 +54,17 @@ box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
 
 .contextra {
   display: flex;
-  margin-left: 65vh;
-  margin-right: 65vh;
+  margin-left: 40vh;
+  margin-right: 40vh;
   padding-top: 10px;
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 3px;
 }
 
+.contplat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
