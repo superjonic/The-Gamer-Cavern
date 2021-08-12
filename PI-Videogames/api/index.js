@@ -22,11 +22,18 @@ const { conn } = require('./src/db.js');
 const axios = require('axios');
 const { Genre } = require('./src/db');
 const { API_KEY } = process.env; 
+const URL = 'https://api.rawg.io/api/';
 require('dotenv').config();
 
 // Syncing all the models at once.
 conn.sync({ force: true })
-  .then(() => {
+  .then(async () => {
+    const lista = await axios.get(`${URL}genres?key=${API_KEY}`) 
+     let categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres
+      return { name: cat.slug }
+  })
+    await Genre.bulkCreate(categories) 
+      
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     //aca puedo meter la precarga de las categorias
