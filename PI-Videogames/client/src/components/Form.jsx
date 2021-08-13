@@ -13,9 +13,11 @@ export default function Form () {
         description: '',
         released: '',
         rating: '',
-        genres: [],
+        genre1: '',
+        genre2: '',
         platforms: []    
     })
+  
     // const dispatch = useDispatch();
 
     function handleChange(e){    
@@ -27,9 +29,16 @@ export default function Form () {
     function handleSelect(e){
         setInput({
             ...input,
-            genres: [...input.genres, e.target.value]
+            genre1: e.target.value
         })
     }
+    function handleSelect2(e){
+        setInput({
+            ...input,
+            genre2: e.target.value
+        })
+    }
+
     function handleCheckbox(e){
         const isChecked = e.target.checked;
        if(isChecked){
@@ -51,7 +60,8 @@ export default function Form () {
             description: '',
             released: '',
             rating: '',
-            genres: [],
+            genre1: '',
+            genre2: '',             //puedo crear dos key genre1 y genre2, y enviar al back y que lleguen fuera del array
             platforms: []    
         })
     }
@@ -78,28 +88,54 @@ export default function Form () {
                 </div>
 
                 <div  className ="genres">
-                    <div >
+                    <div>
                     <span>Genre 1</span>     
-                        <select name="genres" id ="genres" value ={input.genres} onChange ={handleSelect}>
+                        <select name="genre1" id ="genres" value ={input.genre1} onChange ={handleSelect}>
                             <option value= ""> -- select an option -- </option>
-                            <option value="Action">Action</option>
-                            <option value="Adventure">Adventure</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Zombies">Zombies</option>
-                            <option value="Strategy">Strategy</option>
-                            <option value="Arcade">Arcade</option>
+                            <option value= "1">Action</option> 
+                            <option value="2">Indie</option>
+                            <option value="3">Adventure</option>
+                            <option value="4">Role</option>
+                            <option value="5">Strategy</option>
+                            <option value="6">Shooter</option>
+                            <option value="7">Casual</option>
+                            <option value="8">Simulation</option>
+                            <option value="9">Puzzle</option>
+                            <option value="10">Arcade</option>
+                            <option value="11">Platformer</option>
+                            <option value="12">Racing</option>
+                            <option value="13">Multiplayer</option>
+                            <option value="14">Sports</option>
+                            <option value="15">Fighting</option>
+                            <option value="16">Family</option>
+                            <option value="17">Board-games</option>
+                            <option value="18">Educational</option>
+                            <option value="19">Card</option>
                         </select>
                     </div>    
                     <div >
                     <label>Genre 2</label>     
-                        <select name="genres" id ="genres" value ={input.genres} onChange ={handleSelect} >
+                        <select name="genre2" id ="genres" value ={input.genre2} onChange ={handleSelect2} >
                             <option value= ""> -- select an option -- </option>
-                            <option value="Fighting">Fighting</option>
-                            <option value="Racing">Racing</option>
-                            <option value="Family">Family</option>
-                            <option value="Simulation">Simulation</option>
-                            <option value="Puzzle">Puzzle</option>
-                            <option value="Shooter">Shooter</option>
+                            <option value= "1">Action</option> 
+                            <option value="2">Indie</option>
+                            <option value="3">Adventure</option>
+                            <option value="4">Role</option>
+                            <option value="5">Strategy</option>
+                            <option value="6">Shooter</option>
+                            <option value="7">Casual</option>
+                            <option value="8">Simulation</option>
+                            <option value="9">Puzzle</option>
+                            <option value="10">Arcade</option>
+                            <option value="11">Platformer</option>
+                            <option value="12">Racing</option>
+                            <option value="13">Multiplayer</option>
+                            <option value="14">Sports</option>
+                            <option value="15">Fighting</option>
+                            <option value="16">Family</option>
+                            <option value="17">Board-games</option>
+                            <option value="18">Educational</option>
+                            <option value="19">Card</option>
                         </select>   
                     </div>  
                 </div>  

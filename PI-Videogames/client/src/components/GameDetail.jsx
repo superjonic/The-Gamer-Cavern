@@ -7,30 +7,57 @@ import axios from 'axios';
 
 export default function GameDetail (){
     const [game, setGame] = useState({});
+    const [isLoading, setIsLoading] = useState(true)
     //dispatchar una accion llamando a la ruta del back con el id o llamar al back con el id del juego
     const { id } = useParams()
    
-    function getVideogameById(id){
-         axios.get(`http://localhost:3001/videogames/${id}`)
-            .then((game) => {
-                setGame(game.data)
-            } )
+    // function getVideogameById(id){
+    //      setIsLoading(true)   
+    //      axios.get(`http://localhost:3001/videogames/${id}`)
+    //         .then((game) => {
+    //             setGame(game.data)
+    //             setIsLoading(false)
+    //         })
+    //         .catch(err => setIsLoading(false))
             
-       }
-    
+    //    }
+    const getVideogameById = async () => {
+        setIsLoading(true)
+        try{
+           const response = await axios.get(`http://localhost:3001/videogames/${id}`)
+           
+           setGame(response.data)
+           setIsLoading(false)
+        }
+        catch (error){
+            setIsLoading(false)
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
         getVideogameById(id) 
     }, [])
     
-    console.log(game)
+    console.log(game.name)
+    console.log(isLoading)
     // var arr = []
     // arr.push(Object.keys(game))
+    if(isLoading){
+        return (
+            <div>
+                <h2>Loading</h2>
+            </div>
+        )
+    }
+    
+ 
     return (
             <div>
                 
-              {
+              { 
                   
-              Object.keys(game).length !== 0  ?        //esta mal esta expresion, no funciona, siempre es dist de cero
+              game.name  ?        //esta mal esta expresion, no funciona, siempre es dist de cero
                   <div>
                     <div className ="tit"> 
                         <h1 >{game.name}</h1>
@@ -60,7 +87,7 @@ export default function GameDetail (){
                             <h2>Rating: {game.rating}</h2>
                         </div>  
                   </div>
-                  : <h2>Loading</h2>
+                  : <h2>There is no game with that ID</h2>
               }
             </div> 
     )

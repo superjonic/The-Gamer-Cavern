@@ -26,7 +26,7 @@ const URL = 'https://api.rawg.io/api/';
 require('dotenv').config();
 
 // Syncing all the models at once.
-conn.sync({ force: true })
+conn.sync({ force: true})
   .then(async () => {
     const lista = await axios.get(`${URL}genres?key=${API_KEY}`) 
      let categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres

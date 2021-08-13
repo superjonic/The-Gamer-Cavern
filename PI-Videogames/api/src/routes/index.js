@@ -51,14 +51,14 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
         //tambien deberia buscar en la base de datos y traerlos, agregarlos a la devolucion
         try{
             //deberia agregar un find a la db
-            const dbGames = await Videogame.findAll({
-                where: {                            //op ilike, que incluya la string que me viene por query
-                    name: {
-                        [Op.iLike] :`%${name}%`
-                    }
-                }
-            })
-            console.log(dbGames)
+            // const dbGames = await Videogame.findAll({
+            //     where: {                            //op ilike, que incluya la string que me viene por query
+            //         name: {
+            //             [Op.iLike] :`%${name}%`
+            //         }
+            //     }
+            // })
+            // console.log(dbGames)
             //dbGames.map( (g) => {
             //    return {
             //      id: g.id,
@@ -88,7 +88,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                  return res.send(fifteen); //aca estoy enviando la resp de la api sin consultar la db
 
             } else {
-                return res.send(dbGames);
+                return res.send(clientgames); //aca me esta faltando 
              }
         }
         catch(error){
@@ -121,10 +121,21 @@ router.get('/videogames/:id', async (req, res) => {
     }    
     catch(error){
         console.log(error)
-       
+        res.status(404)
     }     
     
 })
+
+// const dbVideogames = async () => {   jordan by jorge
+//     return await Videogame.findAll({
+//         attributes: { exclude: ['createdAt' , 'updatedAt']},
+//         include: {
+//             model: Genre,
+//             attributes: ['name'],
+//             through: {attributes: []}
+//         },
+//     })
+// }
 
 router.get('/genres', async (req, res) => {
     // try{
@@ -145,10 +156,19 @@ router.get('/genres', async (req, res) => {
 
 router.post('/videogame', async (req, res) => {
     const {name, description, released, platforms, rating, genres } = req.body    //aca van los datos que llegan desde el form
-    console.log(genres)
-    let platformString = platforms.join(', ')
-    let genresString = genres.join(', ')
+    
+     // tengo que vincular los genres que me llega por body con el id de la tabla genre
+    //array de numbers genres
+    //guardarlos en dos var
+    // findByPk(con cada una de las var)
+
+
+    
     try{
+        let platformString = platforms.join(', ')
+        // let genresString = genres.join(', ') 
+        
+
         if(name && description && platforms){
             const newGame = await Videogame.create({   //para agregarle un genre es necesario el id, metodo sequelize findPk
                        id: uuidv4(), 
@@ -159,7 +179,37 @@ router.post('/videogame', async (req, res) => {
                        platforms: platformString,  //aca me esta faltando la relacion de las dos tablas
                                             
             })
-            newGame.addGenres(genresString)
+            
+            // newGame.addGenres(genresString) //para vincular los genres tengo que encontrarlos en la otra tabla, tienen un genre_id
+            
+            // const dbGenre = await Genre.findAll({
+            //     where: {
+            //         name: 'action'                  // de esta forma guardo por primera vez en la tabla intermedia
+            //     }
+            // }) 
+            const dbGenre = await Genre.findByPk()       // a este dbGenre puedo hacerle un filter, que se quede con solo los genres que vinieron por parametro
+
+//  const {name,description,platforms,genres}= req.body;
+//   try {
+//     await Genres.findByPk(genres)
+//     let [createVG] = await Videogame.findOrCreate({
+//       where: {
+//         name,
+//         id: uuidv4(),
+//         platforms ,
+//         description ,
+//       },
+//     });
+//     createVG.addGenres(genres);
+//     return res.json(createVG);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+             console.log(dbGenre)
+             await newGame.setGenres(genres)    //set va con array
+           
              return res.send(newGame)
         }
     }
