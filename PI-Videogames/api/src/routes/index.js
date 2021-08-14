@@ -200,17 +200,14 @@ router.post('/videogame', async (req, res) => {
                                             
             })
             
-            // newGame.addGenres(genresString) //para vincular los genres tengo que encontrarlos en la otra tabla, tienen un genre_id
             
-            // const dbGenre = await Genre.findAll({
-            //     where: {
-            //         name: 'action'                  // de esta forma guardo por primera vez en la tabla intermedia
-            //     }
-            // }) 
-            const dbGenre1 = await Genre.findByPk(genre1)      
+         
+            const dbGenre1 = await Genre.findByPk(genre1)      //error porque no es un array
             const dbGenre2 = await Genre.findByPk(genre2)
-           
-            
+            let dbGenres = [] 
+            dbGenres.push(dbGenre1)
+            dbGenres.push(dbGenre2)
+            console.log(dbGenres)
             
 //  const {name,description,platforms,genres}= req.body;            Charly way
 //   try {
@@ -231,7 +228,7 @@ router.post('/videogame', async (req, res) => {
 // });
 
              
-             await newGame.setGenres(dbGenre1)    //set va con array
+             await newGame.addGenres(dbGenres)    //set va con array
               
              return res.send(newGame)
         }
