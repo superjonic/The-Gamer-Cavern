@@ -20,7 +20,7 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
     const { name } = req.query;
     var games = []
     if(!name){
-        const games1 = await axios.get(`${URL}games?key=${API_KEY}`);    //OJO la idea es traernos 100 games = 5 pages
+        const games1 = await axios.get(`${URL}games?key=${API_KEY}`);    
         const games2 = await axios.get(`${URL}games?key=${API_KEY}&page=2`);
         const games3 = await axios.get(`${URL}games?key=${API_KEY}&page=3`);
         const games4 = await axios.get(`${URL}games?key=${API_KEY}&page=4`);
@@ -40,12 +40,30 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                     genres: g.genres
                     }
         })  //agregar los videogames creados por el cliente, traer desde nuestra base de datos
-        var clientgames = await Videogame.findAll();
+        const clientgames = await Videogame.findAll({
+            attributes: { exclude: ['createdAt' , 'updatedAt']},
+            include: {
+                model: Genre,
+                attributes: ['name'],
+                through: {attributes: []}
+            }
+        });
         console.log(clientgames)
         var allGames = games.concat(clientgames)
         console.log(allGames.length)
         return res.send(allGames);   
     }
+// const dbVideogames = async () => {   jordan by jorge
+//     return await Videogame.findAll({
+//         attributes: { exclude: ['createdAt' , 'updatedAt']},
+//         include: {
+//             model: Genre,
+//             attributes: ['name'],
+//             through: {attributes: []}
+//         },
+//     })
+// }
+
     if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
         //deberia hacer un axios a la api, me traigo los matches, y luego con un slice limito la cantidad a 15
         //tambien deberia buscar en la base de datos y traerlos, agregarlos a la devolucion
@@ -127,16 +145,7 @@ router.get('/videogames/:id', async (req, res) => {
     
 })
 
-// const dbVideogames = async () => {   jordan by jorge
-//     return await Videogame.findAll({
-//         attributes: { exclude: ['createdAt' , 'updatedAt']},
-//         include: {
-//             model: Genre,
-//             attributes: ['name'],
-//             through: {attributes: []}
-//         },
-//     })
-// }
+
 
 router.get('/genres', async (req, res) => {
     // try{
