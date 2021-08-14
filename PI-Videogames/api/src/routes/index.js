@@ -8,7 +8,7 @@ const { API_KEY } = process.env;
 const { Videogame, Genre } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 const URL = 'https://api.rawg.io/api/';
-const { Op } = require ('sequelize')
+
 const router = Router();
 
 
@@ -107,17 +107,18 @@ router.get('/videogames/:id', async (req, res) => {
     // if(!id || typeof id !== 'number'){
     //     return res.send('the game is not on the list')
     // }
+    console.log(id.length)
     try {        
         if(id.length < 10){
             const game = await axios.get(`${URL}games/${id}?key=${API_KEY}`)
             
             return res.send(game.data)
-        }else {
+        } if(id.length > 10){
             const dbGame = await Videogame.findByPk(id)
             console.log(dbGame.dataValues)
 
             return res.send(dbGame.dataValues)
-        }
+        } 
     }    
     catch(error){
         console.log(error)
@@ -155,7 +156,7 @@ router.get('/genres', async (req, res) => {
 })
 
 router.post('/videogame', async (req, res) => {
-    const {name, description, released, platforms, rating, genres } = req.body    //aca van los datos que llegan desde el form
+    const {name, description, released, platforms, rating, genre1,genre2 } = req.body    //aca van los datos que llegan desde el form
     
      // tengo que vincular los genres que me llega por body con el id de la tabla genre
     //array de numbers genres
@@ -168,7 +169,8 @@ router.post('/videogame', async (req, res) => {
         let platformString = platforms.join(', ')
         // let genresString = genres.join(', ') 
         
-
+        console.log(genre1)
+        console.log(genre2)
         if(name && description && platforms){
             const newGame = await Videogame.create({   //para agregarle un genre es necesario el id, metodo sequelize findPk
                        id: uuidv4(), 
@@ -187,9 +189,9 @@ router.post('/videogame', async (req, res) => {
             //         name: 'action'                  // de esta forma guardo por primera vez en la tabla intermedia
             //     }
             // }) 
-            const dbGenre = await Genre.findByPk()       // a este dbGenre puedo hacerle un filter, que se quede con solo los genres que vinieron por parametro
+            const dbGenre = await Genre.findByPk(genre1)      
 
-//  const {name,description,platforms,genres}= req.body;
+//  const {name,description,platforms,genres}= req.body;            Charly way
 //   try {
 //     await Genres.findByPk(genres)
 //     let [createVG] = await Videogame.findOrCreate({
@@ -208,7 +210,7 @@ router.post('/videogame', async (req, res) => {
 // });
 
              console.log(dbGenre)
-             await newGame.setGenres(genres)    //set va con array
+             await newGame.setGenres(dbGenre)    //set va con array
            
              return res.send(newGame)
         }

@@ -9,7 +9,7 @@ export default function GameDetail (){
     const [game, setGame] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     //dispatchar una accion llamando a la ruta del back con el id o llamar al back con el id del juego
-    const { id } = useParams()
+    const { id } = useParams()                      //platforms dbGames es una string. tengo que convertirla en un array para luego si poder hacer el map
    
     // function getVideogameById(id){
     //      setIsLoading(true)   
@@ -39,7 +39,7 @@ export default function GameDetail (){
         getVideogameById(id) 
     }, [])
     
-    console.log(game.name)
+    console.log(game.platforms)
     console.log(isLoading)
     // var arr = []
     // arr.push(Object.keys(game))
@@ -50,8 +50,7 @@ export default function GameDetail (){
             </div>
         )
     }
-    
- 
+   
     return (
             <div>
                 
@@ -71,9 +70,14 @@ export default function GameDetail (){
                     </div>
                     <div className ="contplat">
                         <h2>Platforms: </h2>
-                         {game.platforms.map((plat) => {      
-                            return <p>{plat.platform.name}</p>
-                        })}
+                         {  typeof game.platforms !== "string" ?
+                                game.platforms.map((plat) => {      
+                                return <p>{plat.platform.name}</p>       
+                        })  : game.platforms.split(',').map( (plat) => {
+                                return <p>{plat}</p>
+                        })  
+                    }
+
                     </div> 
                          
                         <div className ="contimg">
