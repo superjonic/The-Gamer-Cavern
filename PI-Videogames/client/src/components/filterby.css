@@ -3,5 +3,37 @@
     flex-direction: column;
     width: 80%;
     margin-left: 10%;
+    justify-content: space-around;
+}
 
+.btnvgcreat{
+    margin-top: 10px;
+    background-color: #bc1a55;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    padding: 1vh;
+}
+.btnvgcreat:hover {
+    background-color: rgb(192, 59, 6);
+}
+
+.selectgenre{
+    margin-bottom: 10px;
+    background-color: #bc1a55;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    padding: 1vh;
+}
+.selectgenre:hover {
+    background-color: rgb(192, 59, 6);
 }

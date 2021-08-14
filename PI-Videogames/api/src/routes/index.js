@@ -8,7 +8,7 @@ const { API_KEY } = process.env;
 const { Videogame, Genre } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 const URL = 'https://api.rawg.io/api/';
-
+const { Op } = require ('sequelize')
 const router = Router();
 
 
@@ -101,12 +101,23 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                         platforms: g.platforms
                     }
                 })
-                fifteen = fifteen.slice(0, 15)
-                
-                 return res.send(fifteen); //aca estoy enviando la resp de la api sin consultar la db
+                fifteen = fifteen.slice(0, 15)  // aca deberia concatenar resultados de la DB
+                const dbgames = await Videogame.findAll({
+                    where: {name: { [Op.iLike]: name}},
+                    attributes: { exclude: ['createdAt' , 'updatedAt']},
+                    include: {
+                        model: Genre,
+                        attributes: ['name'],
+                        through: {attributes: []}
+                    }
+                });
+                console.log(dbgames)
+                 const allGam = fifteen.concat(dbgames)    
+                 console.log(allGam.length)
+                 return res.send(allGam); //aca estoy enviando la resp de la api sin consultar la db
 
             } else {
-                return res.send(clientgames); //aca me esta faltando 
+                return res.send(dbgames); //aca me esta faltando 
              }
         }
         catch(error){
@@ -165,15 +176,13 @@ router.get('/genres', async (req, res) => {
 })
 
 router.post('/videogame', async (req, res) => {
-    const {name, description, released, platforms, rating, genre1,genre2 } = req.body    //aca van los datos que llegan desde el form
+    const {name, description, released, platforms, rating, genre1, genre2 } = req.body    //aca van los datos que llegan desde el form
     
      // tengo que vincular los genres que me llega por body con el id de la tabla genre
     //array de numbers genres
     //guardarlos en dos var
     // findByPk(con cada una de las var)
 
-
-    
     try{
         let platformString = platforms.join(', ')
         // let genresString = genres.join(', ') 
@@ -198,8 +207,11 @@ router.post('/videogame', async (req, res) => {
             //         name: 'action'                  // de esta forma guardo por primera vez en la tabla intermedia
             //     }
             // }) 
-            const dbGenre = await Genre.findByPk(genre1)      
-
+            const dbGenre1 = await Genre.findByPk(genre1)      
+            const dbGenre2 = await Genre.findByPk(genre2)
+           
+            
+            
 //  const {name,description,platforms,genres}= req.body;            Charly way
 //   try {
 //     await Genres.findByPk(genres)
@@ -218,9 +230,9 @@ router.post('/videogame', async (req, res) => {
 //   }
 // });
 
-             console.log(dbGenre)
-             await newGame.setGenres(dbGenre)    //set va con array
-           
+             
+             await newGame.setGenres(dbGenre1)    //set va con array
+              
              return res.send(newGame)
         }
     }
