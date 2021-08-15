@@ -40,7 +40,7 @@ export default function GameDetail (){
     }, [])
     
     console.log(game)
-    console.log(isLoading)
+    
     // var arr = []
     // arr.push(Object.keys(game))
     if(isLoading){
@@ -77,10 +77,10 @@ export default function GameDetail (){
                                 return <p>{plat}</p>
                         })  
                         }
-                        {/* <div className ="contgenr">         se rompe en el created game 
+                        <div className ="contgenr">         se rompe en el created game 
                             <h2>Genres</h2>
                             {game.genres.map(g => <p>{g.name}</p>)}
-                        </div> */}
+                        </div>
                     </div> 
                          
                         <div className ="contimg">
@@ -94,7 +94,14 @@ export default function GameDetail (){
                             <h2>Rating: {game.rating}</h2>
                         </div>  
                   </div>
-                  : <h2>There is no game with that ID</h2>
+                  : <div className ="tit">
+                         <h2>There is no game with that ID</h2>
+                         <div className ="contback">
+                         <Link to= "/home">
+                         <button className ="btnhome">Back</button>
+                         </Link>
+                        </div>
+                    </div>
               }
             </div> 
     )

@@ -143,8 +143,17 @@ router.get('/videogames/:id', async (req, res) => {
             
             return res.send(game.data)
         } if(id.length > 10){
-            const dbGame = await Videogame.findByPk(id)
-            console.log(dbGame.dataValues)
+            const dbGame = await Videogame.findOne({
+                where: {
+                    id: id
+                },
+                include: {
+                    model: Genre,
+                    attributes: ['name'],
+                    through: {attributes: []}
+                }
+            })  //me estsa faltando traer sus genres asociados (tabla inter)
+            
 
             return res.send(dbGame)
         } 
