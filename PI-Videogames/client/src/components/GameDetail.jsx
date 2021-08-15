@@ -87,7 +87,7 @@ export default function GameDetail (){
                             <img src={game.background_image} alt="imagen" className ="image" /> 
                         </div>
                         <div className="continfo">
-                            <p>{game.description}</p>
+                            <p>{game.description.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                         </div> 
                         <div className ="contextra">
                             <h2>Released: {game.released}</h2>
