@@ -5,6 +5,7 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME";
 export const ORDER_BYNAME_ASC = "ORDER_BYNAME_ASC";
 export const ORDER_BYNAME_DESC = "ORDER_BYNAME_DESC";
+export const FILTER_BYGENRE = "FILTER_BYGENRE";
 
 const URL = 'https://api.rawg.io/api/';
 
@@ -54,5 +55,12 @@ export function orderByNameAsc(){
 export function orderByNameDesc(){
     return {
         type: ORDER_BYNAME_DESC
+    }
+}
+
+export function filterByGenre(genreid){
+    return {
+        type: FILTER_BYGENRE,
+        payload: genreid
     }
 }

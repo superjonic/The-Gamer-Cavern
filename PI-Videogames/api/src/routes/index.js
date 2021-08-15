@@ -146,7 +146,7 @@ router.get('/videogames/:id', async (req, res) => {
             const dbGame = await Videogame.findByPk(id)
             console.log(dbGame.dataValues)
 
-            return res.send(dbGame.dataValues)
+            return res.send(dbGame)
         } 
     }    
     catch(error){

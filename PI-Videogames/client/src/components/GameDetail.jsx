@@ -39,14 +39,14 @@ export default function GameDetail (){
         getVideogameById(id) 
     }, [])
     
-    console.log(game.platforms)
+    console.log(game)
     console.log(isLoading)
     // var arr = []
     // arr.push(Object.keys(game))
     if(isLoading){
         return (
-            <div>
-                <h2>Loading</h2>
+            <div className ="tit">
+                <h2>Loading...</h2>
             </div>
         )
     }
@@ -76,8 +76,11 @@ export default function GameDetail (){
                         })  : game.platforms.split(',').map( (plat) => {
                                 return <p>{plat}</p>
                         })  
-                    }
-
+                        }
+                        {/* <div className ="contgenr">         se rompe en el created game 
+                            <h2>Genres</h2>
+                            {game.genres.map(g => <p>{g.name}</p>)}
+                        </div> */}
                     </div> 
                          
                         <div className ="contimg">

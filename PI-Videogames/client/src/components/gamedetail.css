@@ -68,3 +68,8 @@ box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
   align-items: center;
 
 }
+.contgenr {
+  display: flex;
+  margin-left: 10vh;
+  align-items: center;
+}

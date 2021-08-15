@@ -1,19 +1,31 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterByGenre } from '../actions';
 import './filterby.css';
 
 export default function FilterBy() {
     const videogames = useSelector((state) => state.videogames)
+    const [genre, setGenre] = useState()
+    const dispatch = useDispatch()
+
     //filtrar por genre
     //filtrar por videogame existente o creado por nosotros
     //puedo conectarme al store de redux, y aca filtrar los videogames
+    console.log(genre)
+
+
+    const handleSelect = (e) => {       //Conecte el option al state local, con ese numero de genre tengo que ordenar los vg, un filter donde los juegos tengan ese numero de genre
+        setGenre(e.target.value)
+        dispatch(filterByGenre(genre))        // un filter en el reducer? una action que se llame filterByGenre
+    }
+
     return (
         <div>                   
             <h4>Filter By</h4>
             <div className="filtzone">
                 
         
-                <select name="genres" id="genres" className ="selectgenre">
+                <select name="genres" id="genres" className ="selectgenre" onClick= {handleSelect}>
                             <option value= "">-- Genres --</option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
