@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function GameDetail (){
     const [game, setGame] = useState({});
     const [isLoading, setIsLoading] = useState(true)
+    const [readMore, setReadMore] = useState(false)
     //dispatchar una accion llamando a la ruta del back con el id o llamar al back con el id del juego
     const { id } = useParams()                      //platforms dbGames es una string. tengo que convertirla en un array para luego si poder hacer el map
    
@@ -68,6 +69,7 @@ export default function GameDetail (){
                         </div>
                         
                     </div>
+                    <div className = 'contpyg'>
                     <div className ="contplat">
                         <h2>Platforms: </h2>
                          {  typeof game.platforms !== "string" ?
@@ -77,17 +79,25 @@ export default function GameDetail (){
                                 return <p>{plat}</p>
                         })  
                         }
-                        <div className ="contgenr"> 
+                        
+                    </div>
+                    <div className ="contgenr"> 
                             <h2>Genres</h2>
                             {game.genres.map(g => <p>{g.name}</p>)}
-                        </div>
+                        </div>    
                     </div> 
                          
                         <div className ="contimg">
                             <img src={game.background_image} alt="imagen" className ="image" /> 
                         </div>
                         <div className="continfo">
-                            <p>{game.description.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+
+                            <p>{ readMore ? game.description.replace(/<\/?[^>]+(>|$)/g, "") : `${game.description.substring(0,300).replace(/<\/?[^>]+(>|$)/g, "")}`}
+                                 <button onClick={() => {setReadMore(!readMore)}} className = "btnmore" >
+                                    {readMore ? 'Show less' : '...Read more'}
+                                 </button>
+                            </p>
+
                         </div> 
                         <div className ="contextra">
                             <h2>Released: {game.released}</h2>

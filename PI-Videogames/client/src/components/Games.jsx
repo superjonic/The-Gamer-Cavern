@@ -13,25 +13,22 @@ const dispatch = useDispatch();
 
 const [n1, setN1] = useState(0);
 const [n2, setN2] = useState(9);
+const [isLoading, setIsLoading] = useState(true)
 
   
+
 
   useEffect(() => {
     dispatch(getVideogames())
     dispatch(getGenres())
   },[])
 
-  // useEffect(() => {
-  //   dispatch(getVideogames())
-  // },[searchedVideogames])
+ 
 
 
-// var n1 = Math.floor(Math.random()* 6);   // => el math random del primer renderizado hacerlo en la primera vez action? reducer?
-// var n2 = n1 + 9;
 
-// var nineResults = videogames.slice(n1, n2)
-
-console.log(videogames)         //hacer algun tipo de funcion nextPage - prevPage  2 buttons < >
+console.log(videogames)  
+console.log(isLoading)      
 
 
 const nextPage = () => {            //if llego al final vuelvo a comenzar la cuenta = if(n1 > videgames.length) n1 = 0
@@ -50,13 +47,8 @@ const prevPage = () => {
 }
 
 
-// funcion nextPage y funcion PreviousPage y pasarselas respectivamente a cada button
-// la funcion deberia afectar al state de redux? no podria manejarlo con state local
 
-//yo me traigo 9 con un slice, tengo que relacionarlo, esta conectado, que la funcion muestre los sgtes 9. 
-// entonces los parametros n1 y n2 podrian ser state locales, el slice estaria escuchando a los states, y las funciones afectarian el state, y se re-renderizaria 
-
-                                    //idea hacer el slice dentro del render,dps del .map
+                                    
     return (
         <>
         <div className = "cards">

@@ -11,8 +11,10 @@ export default function Gamecard ({name, image, rating, genres}){ //genres viene
         <div className = "card">
             <h2>{name}</h2>
             <img src={image} alt="gameimage" className= "img" />
-            {/* <p>{rating}</p> */}
-            {gen && <p>{gen.charAt(0).toUpperCase().concat(gen.slice(1))}</p>} 
+            <div className = "genandrat"> 
+                {gen && <p>{gen.charAt(0).toUpperCase().concat(gen.slice(1))}</p>} 
+                <p className = "colorrating">{rating}</p>
+            </div>     
         </div> 
     )
 }

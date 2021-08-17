@@ -38,3 +38,13 @@ h2, p {
     border-radius: 5px;
     
 }
+
+.genandrat{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.colorrating{
+    color: orange;
+    font-weight: bolder;
+}

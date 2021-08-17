@@ -90,7 +90,7 @@ export default function Form () {
                 <div  className ="genres">
                     <div>
                     <span>Genre 1</span>     
-                        <select name="genre1" id ="genres" value ={input.genre1} onChange ={handleSelect}>
+                        <select name="genre1" id ="genres" value ={input.genre1} onChange ={handleSelect} className ="genresform">
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -115,7 +115,7 @@ export default function Form () {
                     </div>    
                     <div >
                     <label>Genre 2</label>     
-                        <select name="genre2" id ="genres" value ={input.genre2} onChange ={handleSelect2} >
+                        <select name="genre2" id ="genres" value ={input.genre2} onChange ={handleSelect2} className ="genresform">
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -139,8 +139,9 @@ export default function Form () {
                         </select>   
                     </div>  
                 </div>  
-                <p className = "plat">Platforms</p> 
+                
                 <div className = "platforms">  
+                    
                     <label><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleCheckbox}/> PS5 </label>
                     <label><input type= "checkbox" value ="Nintendo" onChange ={handleCheckbox}/> Nintendo </label>
                     <label><input type= "checkbox" value ="Pc" onChange ={handleCheckbox}/> PC </label>

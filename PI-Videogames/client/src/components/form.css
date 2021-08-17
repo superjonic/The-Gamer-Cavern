@@ -77,7 +77,7 @@
     cursor: pointer;
     font-size: 18px;
     height: 50px;
-    margin-top: 38px;
+    margin-top: 30px;
     text-align: center;
     width: 100%;
   }
@@ -85,23 +85,18 @@
 .genres {
   display: flex;
   color: rgb(210, 228, 230);
-  margin-left: 30px;
+  justify-content: space-evenly;
+  margin-left: 2vh;
   margin-bottom: 5px;
  
 }
 
 .platforms {
   color: rgb(210, 228, 230);
-  margin-left: 50px;
+  margin-left: 5vh;
   align-items: center;
-  margin-top: 10px; 
+  margin-top: 4vh; 
   
-}
-.plat {
-  margin-left: 100px ;
-  color: rgb(210, 228, 230);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 10px;
 }
 
 .backhome {
@@ -126,4 +121,14 @@
   justify-content: center;
   margin: 15px;
   
+}
+.genresform{
+    background-color: #15172b;
+    border-radius: 5px;
+    color: #eee;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid #bc1a55;
+    padding: 1px;
+    
 }

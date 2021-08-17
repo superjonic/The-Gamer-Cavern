@@ -1,11 +1,11 @@
 
 
 .image{
-  
   max-width:900px;
   max-height:600px;
   width: auto;
   height: auto;
+  border-radius: 5px;
 }
 .contimg{
   display: flex;
@@ -31,8 +31,10 @@
 .continfo{
   display: flex;
   justify-content: center;
-  margin-left: 40vh;
-  margin-right: 40vh;
+  margin-left: 25vh;
+  margin-right: 25vh;
+  border: 2px solid #e78122;
+  padding: 3vh;
 }
 .btnhome {
   background-color: transparent;
@@ -59,17 +61,41 @@ box-shadow: rgb(77, 133, 236) 0 -1px 20px 10px;
   padding-top: 10px;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 3px;
+  margin-bottom: 3vh;
 }
 
 .contplat{
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
+  padding: 1vh; 
 }
 .contgenr {
   display: flex;
-  margin-left: 10vh;
+  justify-content: center;
   align-items: center;
+  border-top: 2px solid  #e78122;; 
+  padding: 1vh; 
+  
+}
+.contpyg {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25vh;
+  margin-right: 25vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border: 2px solid  #e78122;;
+}
+
+.btnmore{
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 1vh;
+}
+.btnmore:hover{
+  color: orange;
 }
