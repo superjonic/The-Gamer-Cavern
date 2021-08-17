@@ -1,4 +1,4 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, FILTER_BYGENRE  } from "../actions";
+import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE  } from "../actions";
 
 
 const initialState = {
@@ -49,6 +49,19 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
             return 0
           })
         }
+      case ORDER_BYRATING_ASC:
+        return {
+          ...state,
+          videogames: [...state.videogames].sort((prev, next) => {
+            return next.rating - prev.rating
+          })
+        }
+      case ORDER_BYRATING_DESC:
+        return {
+          ...state,
+          videogames: [...state.videogames].sort((prev, next) => prev.rating - next.rating)
+       
+        }    
       case FILTER_BYGENRE:
         return {
           ...state,

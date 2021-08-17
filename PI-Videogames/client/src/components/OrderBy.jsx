@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { orderByNameAsc, orderByNameDesc } from '../actions';
+import { orderByNameAsc, orderByNameDesc, orderByRatingAsc, orderByRatingDesc } from '../actions';
 import './orderby.css';
 
 export default function OrderBy () {
@@ -18,6 +18,12 @@ export default function OrderBy () {
     const orderDesc = () => {
         dispatch(orderByNameDesc())
     }
+    const orderRatingAsc = () => {
+        dispatch(orderByRatingAsc())
+    }
+    const orderRatingdesc = () => {
+        dispatch(orderByRatingDesc())
+    }    
 
     return (
         <div>
@@ -25,8 +31,8 @@ export default function OrderBy () {
             <div className ="orderzone">
                 <button onClick = {orderAsc} className = 'btnorder'>A - Z</button>
                 <button onClick= {orderDesc} className = 'btnorder' >Z - A</button>
-                <button className = 'btnorder'>Best Rating</button>
-                <button className = 'btnorder'>Less Rating</button>
+                <button onClick = {orderRatingAsc} className = 'btnorder'>Best Rating</button>
+                <button onClick = {orderRatingdesc} className = 'btnorder'>Less Rating</button>
             </div>
         </div>
     )
