@@ -168,19 +168,19 @@ router.get('/videogames/:id', async (req, res) => {
 
 
 router.get('/genres', async (req, res) => {
-    // try{
-    //     let categories = [];
-    //     const lista = await axios.get(`${URL}genres?key=${API_KEY}`)    //traigo de la api los genres
-    //     categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres
-    //         return { name: cat.slug }
-    //     })    
-    //      Genre.bulkCreate(categories)                                      //ahora tengo que guardarlo en mi db, en el model
-    //     console.log(categories)
-    //     res.send(categories)
-    // }
-    // catch(error){
-    //     console.log(error)
-    // }
+    try{
+        let categories = [];
+        const lista = await axios.get(`${URL}genres?key=${API_KEY}`)    //traigo de la api los genres
+        categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres
+            return { name: cat.slug }
+        })    
+                                             //ahora tengo que guardarlo en mi db, en el model
+        console.log(categories)
+        res.send(categories)
+    }
+    catch(error){
+        console.log(error)
+    }
     
 })
 

@@ -1,8 +1,9 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, FILTER_BYGENRE  } from "../actions";
+import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, FILTER_BYGENRE  } from "../actions";
 
 
 const initialState = {
-  videogames: []
+  videogames: [],
+  genres: []
 };
 
 function rootReducer (state = initialState, action) {     //Mati hace el order y filter en redux
@@ -18,6 +19,11 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
           ...state,
           videogames: action.payload
         }
+      case GET_GENRES:
+        return {
+          ...state,
+          genres: action.payload
+        }  
         
       case SEARCH_VIDEOGAME:
           return {
@@ -28,18 +34,28 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
       case ORDER_BYNAME_ASC:
         return {
           ...state,
-          videogames: state.videogames.sort((a, b) => a.name.localeCompare(b.name))
+          videogames: [...state.videogames].sort((prev, next) => {
+            if(prev.name > next.name) return 1
+            if(prev.name < next.name) return -1
+            return 0
+          })
         }
       case ORDER_BYNAME_DESC:
         return {
           ...state,
-          videogames: state.videogames.sort((a, b) => b.name.localeCompare(a.name))
+          videogames: [...state.videogames].sort((prev, next) => {
+            if(prev.name > next.name) return -1
+            if(prev.name < next.name) return 1
+            return 0
+          })
         }
       case FILTER_BYGENRE:
         return {
           ...state,
-          videogames: state.videogames.genres.filter((genre) => {
-            return state.videogames.genre.id === action.payload
+          videogames: state.videogames.filter((game) => {
+             return game.genres.find((genre) =>{ 
+               return genre.slug === action.payload
+              })
           })
         }  
         

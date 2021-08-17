@@ -9,7 +9,7 @@ export default function Welcome(){
             <div className = "circle"> 
                 <h1>The Gamer Cavern</h1>
                 <h4>Welcome</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eveniet aut neque dolores, error optio vero eos similique esse inventore.</p>
+                <p>Press Enter to find out all the games you are looking for, the latest, the oldest, the best. We are gamers like you. </p>
                 <Link to="/home">
                 <button className= "btn1">Enter</button>
                 </Link>

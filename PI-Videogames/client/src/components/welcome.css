@@ -75,5 +75,7 @@ p {
     margin-left: 2vh;
     margin-right: 2vh;
     text-align: justify;
+    letter-spacing: 1px;
+    word-spacing: -1px;
 }
 

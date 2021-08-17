@@ -23,8 +23,8 @@ export default function OrderBy () {
         <div>
             <h4>Order By</h4>
             <div className ="orderzone">
-                <button onClick = {orderAsc()} className = 'btnorder'>A - Z</button>
-                <button onClick= {orderDesc()} className = 'btnorder' >Z - A</button>
+                <button onClick = {orderAsc} className = 'btnorder'>A - Z</button>
+                <button onClick= {orderDesc} className = 'btnorder' >Z - A</button>
                 <button className = 'btnorder'>Best Rating</button>
                 <button className = 'btnorder'>Less Rating</button>
             </div>

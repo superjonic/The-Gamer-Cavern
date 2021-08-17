@@ -77,7 +77,7 @@ export default function GameDetail (){
                                 return <p>{plat}</p>
                         })  
                         }
-                        <div className ="contgenr">         se rompe en el created game 
+                        <div className ="contgenr"> 
                             <h2>Genres</h2>
                             {game.genres.map(g => <p>{g.name}</p>)}
                         </div>
