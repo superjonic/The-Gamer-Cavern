@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByGenre } from '../actions';
+import { filterByGenre, getVideogames, madeByYou } from '../actions';
 import './filterby.css';
+
 
 export default function FilterBy() {
     
-    const [genre, setGenre] = useState()
+    // const [genre, setGenre] = useState()
     const dispatch = useDispatch()
 
     //filtrar por genre
     //filtrar por videogame existente o creado por nosotros
     //puedo conectarme al store de redux, y aca filtrar los videogames
-    console.log(genre)
+    
+    
 
 
-    const handleSelect = (e) => {       //Conecte el option al state local, con ese numero de genre tengo que ordenar los vg, un filter donde los juegos tengan ese numero de genre
-        setGenre(e.target.value)
-        dispatch(filterByGenre(genre))        // un filter en el reducer? una action que se llame filterByGenre
+    // const handleSelect = (e) => {       //Conecte el option al state local, con ese numero de genre tengo que ordenar los vg, un filter donde los juegos tengan ese numero de genre
+    //     setGenre(e.target.value)
+    //                                   // un filter en el reducer? una action que se llame filterByGenre
+    // }
+
+    const handleRefresh = () => {
+        dispatch(getVideogames())
     }
+    const handleMadeByYou = () => {
+        dispatch(madeByYou())
+    }
+
 
     return (
         <div>                   
@@ -25,7 +35,7 @@ export default function FilterBy() {
             <div className="filtzone">
                 
         
-                <select name="genres" id="genres" className ="selectgenre" onChange= {handleSelect}>
+                <select name="" id="" className ="selectgenre" onChange= {(e) => dispatch(filterByGenre(e.target.value)) }>
                             <option value= "">-- Genres --</option>
                             <option value= "action">Action</option> 
                             <option value="indie">Indie</option>
@@ -49,7 +59,9 @@ export default function FilterBy() {
                 </select>
 
                 
-                <button className ="btnvgcreat">Made by you</button>
+                <button onClick ={handleMadeByYou} className ="btnvgcreat">Made by you</button>
+
+                <button onClick = {handleRefresh} className ="btnvgcreat">All</button>
             </div>
         </div>
     )

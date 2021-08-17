@@ -21,7 +21,7 @@ export default function OrderBy () {
     const orderRatingAsc = () => {
         dispatch(orderByRatingAsc())
     }
-    const orderRatingdesc = () => {
+    const orderRatingDesc = () => {
         dispatch(orderByRatingDesc())
     }    
 
@@ -32,7 +32,7 @@ export default function OrderBy () {
                 <button onClick = {orderAsc} className = 'btnorder'>A - Z</button>
                 <button onClick= {orderDesc} className = 'btnorder' >Z - A</button>
                 <button onClick = {orderRatingAsc} className = 'btnorder'>Best Rating</button>
-                <button onClick = {orderRatingdesc} className = 'btnorder'>Less Rating</button>
+                <button onClick = {orderRatingDesc} className = 'btnorder'>Less Rating</button>
             </div>
         </div>
     )

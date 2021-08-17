@@ -1,4 +1,4 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE  } from "../actions";
+import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE, MADE_BYYOU  } from "../actions";
 
 
 const initialState = {
@@ -70,7 +70,14 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
                return genre.slug === action.payload
               })
           })
-        }  
+        }
+      case MADE_BYYOU:
+        return {
+          ...state,
+          videogames: state.videogames.filter((game) => {
+            return game.id.length > 10
+          })
+        }    
         
         default:
         return state;

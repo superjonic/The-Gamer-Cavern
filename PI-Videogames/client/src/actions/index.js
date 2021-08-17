@@ -10,6 +10,7 @@ export const ORDER_BYRATING_ASC = "ORDER_BYRATING_ASC";
 export const ORDER_BYRATING_DESC = "ORDER_BYRATING_DESC";
 export const FILTER_BYGENRE = "FILTER_BYGENRE";
 export const GET_GENRES = "GET_GENRES";
+export const MADE_BYYOU = "MADE_BYYOU";
 
 const URL = 'https://api.rawg.io/api/';
 
@@ -89,5 +90,10 @@ export function filterByGenre(genre){
     return {
         type: FILTER_BYGENRE,
         payload: genre
+    }
+}
+export function madeByYou(){
+    return {
+        type: MADE_BYYOU
     }
 }

@@ -7,7 +7,7 @@ import './filterzone.css';
 export default function FilterZone(){
     const [toggle, setToggle] = useState(false);
 
-    function handleClick(){
+    const handleClick = () => {
         setToggle(!toggle)
     }
     console.log(toggle)
