@@ -13,39 +13,38 @@ const dispatch = useDispatch();
 
 const [n1, setN1] = useState(0);
 const [n2, setN2] = useState(9);
-const [isLoading, setIsLoading] = useState(true)
+const [isLoading, setIsLoading] = useState(true);
 
   
 
 
   useEffect(() => {
-    dispatch(getVideogames())
-    dispatch(getGenres())
-  },[])
+    dispatch(getVideogames());
+    dispatch(getGenres());
+  },[]);
 
  
 
 
 
-console.log(videogames)  
-console.log(isLoading)      
+console.log(videogames);  
+console.log(isLoading);    
 
 
 const nextPage = () => {            //if llego al final vuelvo a comenzar la cuenta = if(n1 > videgames.length) n1 = 0
   if(n1 < videogames.length){
-    setN1(n1 + 10)                  
-    setN2(n2 + 10)
+    setN1(n1 + 10);                  
+    setN2(n2 + 10);
   } else if(n1 > videogames.length || n2 > videogames.length) {
-      setN1(0)
-      setN2(9)
+      setN1(0);
+      setN2(9);
   }
 }
 
 const prevPage = () => {
-    setN1(n1 - 10)
-    setN2(n2 - 10)
+    setN1(n1 - 10);
+    setN2(n2 - 10);
 }
-
 
 
                                     

@@ -1,12 +1,12 @@
 import React from 'react';
 import './gamecard.css';
 
-export default function Gamecard ({name, image, rating, genres}){ //genres viene de la api, no de la db
+export default function Gamecard ({name, image, rating, genres}){ 
    console.log(genres)
    var gen = genres.map(g => g.name ).join(' | ')
    
    console.log(gen.charAt(0).toUpperCase().concat(gen.slice(1)))   
-   //el genres que viene de dbGames es undefined por eso se rompe el map, NECESITO ASOCIAR LAS TABLAS
+ 
     return (
         <div className = "card">
             <h2>{name}</h2>
@@ -18,5 +18,3 @@ export default function Gamecard ({name, image, rating, genres}){ //genres viene
         </div> 
     )
 }
-
-// el map a genres funciona, pero no cuando haces una busqueda

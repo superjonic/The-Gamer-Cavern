@@ -81,6 +81,9 @@
     text-align: center;
     width: 100%;
   }
+  .submit:hover{
+    background-color: #f8065f;
+  }
 
 .genres {
   display: flex;

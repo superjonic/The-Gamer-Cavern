@@ -3,29 +3,45 @@ import './form.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { addVideogame } from '../actions';
 
+
+// function validate(input){                
+//     let errors = {};
+//     if(!input.name){
+//         errors.name = "Name is required"
+//    }else if(/ /.test(input.name)){
+//         errors.name = "Name is invalid"       
+//   } else if (!input.description){
+//         errors.description = "Description is required" 
+//   } else if (!input.released){
+//         errors.released = "Released is required"   
+//  } else if (input.rating > 5){
+//         errors.rating = "Max rating is 5"   
+//  }
+//  return errors;
+// }
 
 export default function Form () {
     const [input, setInput] = useState({
-        name: '',
-        description: '',
-        released: '',
-        rating: '',
+        name: '',                   // required - max x num char - acepta solo leteras y numeros
+        description: '',            //required
+        released: '',               // required
+        rating: '',                 // required max 5 puntos
         genre1: '',
         genre2: '',
         platforms: []    
     })
   
-    // const dispatch = useDispatch();
+  
 
-    function handleChange(e){    
-        setInput({       
-          ...input,
+    function handleChange(e){                           //aca hacer las validaciones pero handlechange la utilizan 
+        setInput({                                      // varios inputs, puedo hacer dos handlechange            
+          ...input,                                    // uno con validate y uno sin validate 
           [e.target.name]: e.target.value
         })
     }
+
+
     function handleSelect(e){
         setInput({
             ...input,

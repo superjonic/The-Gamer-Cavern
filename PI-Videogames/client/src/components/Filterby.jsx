@@ -6,21 +6,9 @@ import './filterby.css';
 
 export default function FilterBy() {
     
-    // const [genre, setGenre] = useState()
     const dispatch = useDispatch()
 
-    //filtrar por genre
-    //filtrar por videogame existente o creado por nosotros
-    //puedo conectarme al store de redux, y aca filtrar los videogames
-    
-    
-
-
-    // const handleSelect = (e) => {       //Conecte el option al state local, con ese numero de genre tengo que ordenar los vg, un filter donde los juegos tengan ese numero de genre
-    //     setGenre(e.target.value)
-    //                                   // un filter en el reducer? una action que se llame filterByGenre
-    // }
-
+   
     const handleRefresh = () => {
         dispatch(getVideogames())
     }
