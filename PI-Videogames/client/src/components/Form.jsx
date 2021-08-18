@@ -1,27 +1,26 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import './form.css';
 import axios from 'axios';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-// function validate(input){                
-//     let errors = {};
-//     if(!input.name){
-//         errors.name = "Name is required"
-//    }else if(/ /.test(input.name)){
-//         errors.name = "Name is invalid"       
-//   } else if (!input.description){
-//         errors.description = "Description is required" 
-//   } else if (!input.released){
-//         errors.released = "Released is required"   
-//  } else if (input.rating > 5){
-//         errors.rating = "Max rating is 5"   
-//  }
-//  return errors;
-// }
+
+export function validate(input){                
+    let errors = {};
+    if(!input.name){
+        errors.name = "Name is required"
+   }else if(!/^[A-Za-z]+$/.test(input.name)){  
+        errors.name = "Name is invalid"       
+  } else if (!input.description){
+        errors.description = "Description is required" 
+  } else if (input.rating > '5'){
+        errors.rating = "Max rating is 5"   
+ }
+ return errors;
+}
 
 export default function Form () {
+    const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
         name: '',                   // required - max x num char - acepta solo leteras y numeros
         description: '',            //required
@@ -39,6 +38,10 @@ export default function Form () {
           ...input,                                    // uno con validate y uno sin validate 
           [e.target.name]: e.target.value
         })
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
+        }))
     }
 
 
@@ -77,7 +80,7 @@ export default function Form () {
             released: '',
             rating: '',
             genre1: '',
-            genre2: '',             //puedo crear dos key genre1 y genre2, y enviar al back y que lleguen fuera del array
+            genre2: '',             
             platforms: []    
         })
     }
@@ -88,11 +91,13 @@ export default function Form () {
                 <h2 className ="title">Create Videogame</h2>
                 <div className = "input-container ic1">
 
-                    <input type="text" className ="input" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
+                    <input type="text" className = "input" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
+                    {errors.name ? <p className ="danger">{errors.name}</p> : null}
                 </div>
                 <div className = "input-container ic1">
 
                     <input type="text" className ="input" name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
+                    {errors.description ? <p className ="danger">{errors.description}</p> : null}
                 </div>
                 <div className = "input-container ic1">
 
@@ -101,6 +106,7 @@ export default function Form () {
                 <div className = "input-container ic1">
 
                    <input type="number" className ="input" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
+                   {errors.rating ? <p className ="danger">{errors.rating}</p> : null}
                 </div>
 
                 <div  className ="genres">

@@ -67,6 +67,13 @@
     transition: transform 200ms, color 200ms;
     top: 20px;
   }
+  .danger{
+    color: red;
+    font-size: 12px;
+  }
+  .inputdanger{
+    border: 1px solid red;
+  }
 
   .submit {
     background-color: #bc1a55;
