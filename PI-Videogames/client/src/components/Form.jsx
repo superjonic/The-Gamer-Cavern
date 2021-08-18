@@ -9,7 +9,7 @@ export function validate(input){
     let errors = {};
     if(!input.name){
         errors.name = "Name is required"
-   }else if(!/^[A-Za-z]+$/.test(input.name)){  
+   }else if(!/^[a-zA-Z ]*$/.test(input.name)){  
         errors.name = "Name is invalid"       
   } else if (!input.description){
         errors.description = "Description is required" 

@@ -16,7 +16,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/videogames', async (req, res) => { //! me esta faltando traer los vg de la base de datos que el client crea
+router.get('/videogames', async (req, res) => { 
     const { name } = req.query;
     var games = []
     if(!name){
@@ -28,12 +28,12 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
         
         games = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results, games5.data.results)
          
-        games = games.map((g) => {             //games es la sum de 5 apicalls,   
+        games = games.map((g) => {              
             return { 
                     id: g.id,
                     name: g.name,
                     image: g.background_image,
-                    description: g.description, //description solo figura en el endpoint de id de la api
+                    description: g.description, 
                     released: g.released,
                     rating: g.rating,
                     platforms: g.platforms,
@@ -53,38 +53,9 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
         console.log(allGames.length)
         return res.send(allGames);   
     }
-// const dbVideogames = async () => {   jordan by jorge
-//     return await Videogame.findAll({
-//         attributes: { exclude: ['createdAt' , 'updatedAt']},
-//         include: {
-//             model: Genre,
-//             attributes: ['name'],
-//             through: {attributes: []}
-//         },
-//     })
-// }
 
-    if(name){               //devolver los primeros 15 juegos que matcheen con la palabra 
-        //deberia hacer un axios a la api, me traigo los matches, y luego con un slice limito la cantidad a 15
-        //tambien deberia buscar en la base de datos y traerlos, agregarlos a la devolucion
-        try{
-            //deberia agregar un find a la db
-            // const dbGames = await Videogame.findAll({
-            //     where: {                            //op ilike, que incluya la string que me viene por query
-            //         name: {
-            //             [Op.iLike] :`%${name}%`
-            //         }
-            //     }
-            // })
-            // console.log(dbGames)
-            //dbGames.map( (g) => {
-            //    return {
-            //      id: g.id,
-            //}     name: g.name,
-            //      description: g.description,
-            //      rating: g.rating,
-           // })    platforms: g.platforms
-
+    if(name){               
+        try{ 
 
             let fifteenGames = await axios.get(`${URL}games?search=${name}&key=${API_KEY}`);
             if (fifteenGames.data.results.length !== 0){
@@ -94,14 +65,14 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                         id: g.id,
                         name: g.name,
                         image: g.background_image,
-                        description: g.description, //description solo figura en el endpoint de id de la api
+                        description: g.description, 
                         released: g.released,
                         rating: g.rating,
                         genres: g.genres,
                         platforms: g.platforms
                     }
                 })
-                fifteen = fifteen.slice(0, 15)  // aca deberia concatenar resultados de la DB
+                fifteen = fifteen.slice(0, 15)  // aca concateno los resultados de la DB
                 const dbgames = await Videogame.findAll({
                     where: {name: { [Op.iLike]: name}},
                     attributes: { exclude: ['createdAt' , 'updatedAt']},
@@ -114,28 +85,22 @@ router.get('/videogames', async (req, res) => { //! me esta faltando traer los v
                 console.log(dbgames)
                  const allGam = fifteen.concat(dbgames)    
                  console.log(allGam.length)
-                 return res.send(allGam); //aca estoy enviando la resp de la api sin consultar la db
+                 return res.send(allGam); 
 
             } else {
-                return res.send(dbgames); //aca me esta faltando 
+                return res.send(dbgames); 
              }
         }
         catch(error){
             res.sendStatus(404).send('There is no game with that name')
         }
-        // for(let i = 0; i <= 15; i++){
-        //     fifteenGames[i]
-        // }
-        //return res.send('entre en elquery name, y devuelvo el name:' + name)  
     }
 })
 
 
 router.get('/videogames/:id', async (req, res) => {
     const { id } = req.params;
-    // if(!id || typeof id !== 'number'){
-    //     return res.send('the game is not on the list')
-    // }
+   
     console.log(id.length)
     try {        
         if(id.length < 10){
@@ -152,9 +117,8 @@ router.get('/videogames/:id', async (req, res) => {
                     attributes: ['name'],
                     through: {attributes: []}
                 }
-            })  //me estsa faltando traer sus genres asociados (tabla inter)
+            })  
             
-
             return res.send(dbGame)
         } 
     }    
@@ -162,9 +126,7 @@ router.get('/videogames/:id', async (req, res) => {
         console.log(error)
         res.status(404)
     }     
-    
 })
-
 
 
 router.get('/genres', async (req, res) => {
@@ -174,7 +136,7 @@ router.get('/genres', async (req, res) => {
         categories = lista.data.results.map( (cat) => {                 //mapeo para solo guardar los nombres
             return { name: cat.slug }
         })    
-                                             //ahora tengo que guardarlo en mi db, en el model
+                                             
         console.log(categories)
         res.send(categories)
     }
@@ -187,57 +149,29 @@ router.get('/genres', async (req, res) => {
 router.post('/videogame', async (req, res) => {
     const {name, description, released, platforms, rating, genre1, genre2 } = req.body    //aca van los datos que llegan desde el form
     
-     // tengo que vincular los genres que me llega por body con el id de la tabla genre
-    //array de numbers genres
-    //guardarlos en dos var
-    // findByPk(con cada una de las var)
-
     try{
         let platformString = platforms.join(', ')
-        // let genresString = genres.join(', ') 
         
         console.log(genre1)
         console.log(genre2)
         if(name && description && platforms){
-            const newGame = await Videogame.create({   //para agregarle un genre es necesario el id, metodo sequelize findPk
+            const newGame = await Videogame.create({   
                        id: uuidv4(), 
                        name,
                        description,
-                       released,            //OJO released tiene que llegar en formato numero sino se rompe
+                       released,            
                        rating,
-                       platforms: platformString,  //aca me esta faltando la relacion de las dos tablas
-                                            
+                       platforms: platformString,                                            
             })
             
-            
-         
-            const dbGenre1 = await Genre.findByPk(genre1)      //error porque no es un array
+            const dbGenre1 = await Genre.findByPk(genre1)      
             const dbGenre2 = await Genre.findByPk(genre2)
             let dbGenres = [] 
             dbGenres.push(dbGenre1)
             dbGenres.push(dbGenre2)
             console.log(dbGenres)
-            
-//  const {name,description,platforms,genres}= req.body;            Charly way
-//   try {
-//     await Genres.findByPk(genres)
-//     let [createVG] = await Videogame.findOrCreate({
-//       where: {
-//         name,
-//         id: uuidv4(),
-//         platforms ,
-//         description ,
-//       },
-//     });
-//     createVG.addGenres(genres);
-//     return res.json(createVG);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-             
-             await newGame.addGenres(dbGenres)    //set va con array
+                        
+             await newGame.addGenres(dbGenres)    
               
              return res.send(newGame)
         }

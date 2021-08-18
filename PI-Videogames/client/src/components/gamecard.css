@@ -34,10 +34,16 @@ h2, p {
     height: 35vh;
     border: 1px solid #e78122;
     box-shadow: rgb(77, 133, 236) 0 -1px 5px 1px,  rgb(226, 120, 33) 0 2px 12px;
-  
     border-radius: 5px;
-    
 }
+.imgdef{
+    width: 50vh;
+    height: 35vh;
+    background-color: #17ff51;
+    box-shadow: rgb(77, 133, 236) 0 -1px 5px 1px,  rgb(226, 120, 33) 0 2px 12px;
+    border-radius: 5px;
+}
+
 
 .genandrat{
     display: flex;
