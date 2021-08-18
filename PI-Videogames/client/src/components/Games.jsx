@@ -3,7 +3,7 @@ import Gamecard from './GameCard';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; //equivale a mapStateToProps
 import './games.css';
-import { getVideogames, getGenres } from '../actions/index';
+import { getVideogames } from '../actions/index';
 
 
 export default function Games (){
@@ -13,6 +13,7 @@ const dispatch = useDispatch();
 
 const [n1, setN1] = useState(0);
 const [n2, setN2] = useState(9);
+
 const [isLoading, setIsLoading] = useState(true);
 
   
@@ -20,7 +21,6 @@ const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getVideogames());
-    dispatch(getGenres());
   },[]);
 
  

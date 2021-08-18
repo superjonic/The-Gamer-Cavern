@@ -1,30 +1,20 @@
-import { ADD_VIDEOGAME, GET_VIDEOGAMES, GET_GENRES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE, MADE_BYYOU  } from "../actions";
+import { GET_VIDEOGAMES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE, MADE_BYYOU  } from "../actions";
 
 
 const initialState = {
-  videogames: [],
-  genres: []
+  videogames: []
 };
 
 function rootReducer (state = initialState, action) {     //Mati hace el order y filter en redux
     switch(action.type) {
       // Aca va tu codigo;  
-      case ADD_VIDEOGAME:
-        return {
-          ...state,
-          videogames: [...state.videogames, action.payload]
-        }
+     
       case GET_VIDEOGAMES:
         return {
           ...state,
           videogames: action.payload
         }
-      case GET_GENRES:
-        return {
-          ...state,
-          genres: action.payload
-        }  
-        
+            
       case SEARCH_VIDEOGAME:
           return {
             ...state,

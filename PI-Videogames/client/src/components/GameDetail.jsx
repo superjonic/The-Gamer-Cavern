@@ -23,7 +23,7 @@ export default function GameDetail (){
             
     //    }
     const getVideogameById = async () => {
-        setIsLoading(true)
+        
         try{
            const response = await axios.get(`http://localhost:3001/videogames/${id}`)
            
@@ -38,6 +38,7 @@ export default function GameDetail (){
 
     useEffect(() => {
         getVideogameById(id) 
+        
     }, [])
     
     console.log(game)
@@ -51,6 +52,7 @@ export default function GameDetail (){
             </div>
         )
     }
+   
    
     return (
             <div>

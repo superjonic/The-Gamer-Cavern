@@ -72,7 +72,6 @@ export default function Form () {
 
     async function handleSubmit(e){
         e.preventDefault()
-        // dispatch(addVideogame(input))
        await axios.post('http://localhost:3001/videogame', input)
         setInput({
             name: '',
