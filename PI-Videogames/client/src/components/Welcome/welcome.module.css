@@ -11,12 +11,13 @@
     margin: 0;
     padding: 0;
     position: relative;
+
 }
 
 .circle {
-    position: absolute;
+    position: relative;
     top: 10%;
-    left: 38%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -78,4 +79,5 @@ p {
     letter-spacing: 1px;
     word-spacing: -1px;
 }
+
 
