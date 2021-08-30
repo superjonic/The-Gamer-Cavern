@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByGenre, getVideogames, madeByYou } from '../actions';
-import './filterby.css';
+import { filterByGenre, getVideogames, madeByYou, orderByDate } from '../../actions';
+import styles from './filterby.module.css';
 
 
 export default function FilterBy() {
-    
     const dispatch = useDispatch()
 
    
@@ -15,15 +14,17 @@ export default function FilterBy() {
     const handleMadeByYou = () => {
         dispatch(madeByYou())
     }
-
+    const handleDate = () => {
+        dispatch(orderByDate())
+    }
 
     return (
         <div>                   
             <h4>Filter By</h4>
-            <div className="filtzone">
+            <div className={styles.filtzone}>
                 
         
-                <select name="" id="" className ="selectgenre" onChange= {(e) => dispatch(filterByGenre(e.target.value)) }>
+                <select name="" id="" className = {styles.selectgenre} onChange= {(e) => dispatch(filterByGenre(e.target.value)) }>
                             <option value= "">-- Genres --</option>
                             <option value= "action">Action</option> 
                             <option value="indie">Indie</option>
@@ -47,9 +48,11 @@ export default function FilterBy() {
                 </select>
 
                 
-                <button onClick ={handleMadeByYou} className ="btnvgcreat">Made by you</button>
+                <button onClick ={handleMadeByYou} className ={styles.btnvgcreat}>Made by you</button>
 
-                <button onClick = {handleRefresh} className ="btnvgcreat">All</button>
+                <button onClick = {handleRefresh} className ={styles.btnvgcreat}>All</button>
+
+                <button onClick = {handleDate} className ={styles.btnvgcreat}>By released</button>
             </div>
         </div>
     )

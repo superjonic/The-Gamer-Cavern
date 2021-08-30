@@ -1,8 +1,7 @@
 import React, { useState }  from 'react';
-import './form.css';
+import styles from './form.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
 
 
 export function validate(input){                
@@ -15,7 +14,7 @@ export function validate(input){
         errors.description = "Description is required" 
   } else if (input.rating > '5'){
         errors.rating = "Max rating is 5"   
- }
+ }  
  return errors;
 }
 
@@ -33,9 +32,9 @@ export default function Form () {
   
   
 
-    function handleChange(e){                           //aca hacer las validaciones pero handlechange la utilizan 
-        setInput({                                      // varios inputs, puedo hacer dos handlechange            
-          ...input,                                    // uno con validate y uno sin validate 
+    function handleChange(e){                            
+        setInput({                                                
+          ...input,                                    
           [e.target.name]: e.target.value
         })
         setErrors(validate({
@@ -84,34 +83,34 @@ export default function Form () {
         })
     }
     return (
-        <div className = "back">
+        <div className = {styles.back}>
 
-            <form className = "form" onSubmit={handleSubmit}>
-                <h2 className ="title">Create Videogame</h2>
-                <div className = "input-container ic1">
+            <form className = {styles.form} onSubmit={handleSubmit}>
+                <h2 className ={styles.title}>Create Videogame</h2>
+                <div className ={` ${styles.inputcontainer} ${styles.ic1} `} >
 
-                    <input type="text" className = "input" name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
+                    <input type="text" className = {styles.input} name ="name" value={input.name} onChange={handleChange} placeholder = "Name"/>
                     {errors.name ? <p className ="danger">{errors.name}</p> : null}
                 </div>
-                <div className = "input-container ic1">
+                <div className = {` ${styles.inputcontainer} ${styles.ic1} `} >
 
-                    <input type="text" className ="input" name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
-                    {errors.description ? <p className ="danger">{errors.description}</p> : null}
+                    <input type="text" className ={styles.input} name ="description" value={input.description} onChange={handleChange} placeholder = "Description" />
+                    {errors.description ? <p className ={styles.danger}>{errors.description}</p> : null}
                 </div>
-                <div className = "input-container ic1">
+                <div className = {` ${styles.inputcontainer} ${styles.ic1} `}>
 
-                    <input type="date" className ="input" name = "released" value ={input.released} onChange={handleChange} placeholder = "Released" />
+                    <input type="date" className ={styles.input} name = "released" value ={input.released} onChange={handleChange} placeholder = "Released" />
                 </div>
-                <div className = "input-container ic1">
+                <div className = {` ${styles.inputcontainer} ${styles.ic1} `}>
 
-                   <input type="number" className ="input" name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
-                   {errors.rating ? <p className ="danger">{errors.rating}</p> : null}
+                   <input type="number" className ={styles.input} name= "rating" value ={input.rating} onChange={handleChange} placeholder = "Rating"/>
+                   {errors.rating ? <p className ={styles.danger}>{errors.rating}</p> : null}
                 </div>
 
-                <div  className ="genres">
+                <div  className ={styles.genres}>
                     <div>
                     <span>Genre 1</span>     
-                        <select name="genre1" id ="genres" value ={input.genre1} onChange ={handleSelect} className ="genresform">
+                        <select name="genre1" id ="genres" value ={input.genre1} onChange ={handleSelect} className ={styles.genresform}>
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -136,7 +135,7 @@ export default function Form () {
                     </div>    
                     <div >
                     <label>Genre 2</label>     
-                        <select name="genre2" id ="genres" value ={input.genre2} onChange ={handleSelect2} className ="genresform">
+                        <select name="genre2" id ="genres" value ={input.genre2} onChange ={handleSelect2} className ={styles.genresform}>
                             <option value= ""> -- select an option -- </option>
                             <option value= "1">Action</option> 
                             <option value="2">Indie</option>
@@ -161,7 +160,7 @@ export default function Form () {
                     </div>  
                 </div>  
                 
-                <div className = "platforms">  
+                <div className = {styles.platforms}>  
                     
                     <label><input type= "checkbox" name ="ps5" value ="PS5" onChange ={handleCheckbox}/> PS5 </label>
                     <label><input type= "checkbox" value ="Nintendo" onChange ={handleCheckbox}/> Nintendo </label>
@@ -171,18 +170,13 @@ export default function Form () {
                     
                 </div> 
                 
-                <button className ="submit">Create</button>
-                        <div className ="contbackhome">
+                <button className ={styles.submit}>Create</button>
+                        <div className ={styles.contbackhome}>
                             <Link to= "/home">
-                            <button className ="backhome">Home</button>
+                            <button className ={styles.backhome}>Home</button>
                             </Link>
                         </div>
-
-
-
             </form>
-
-
         </div>
     )
 }

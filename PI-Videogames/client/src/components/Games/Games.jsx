@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Gamecard from './GameCard';
+import Gamecard from '../GameCard/GameCard';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'; //equivale a mapStateToProps
-import './games.css';
-import { getVideogames } from '../actions/index';
+import { useSelector, useDispatch } from 'react-redux'; 
+import styles from './games.module.css';
+import { getVideogames } from '../../actions/index';
 
 
 export default function Games (){
@@ -17,21 +17,16 @@ const [n2, setN2] = useState(9);
 const [isLoading, setIsLoading] = useState(true);
 
   
-
-
   useEffect(() => {
     dispatch(getVideogames());
   },[]);
 
  
-
-
-
 console.log(videogames);  
 console.log(isLoading);    
 
 
-const nextPage = () => {            //if llego al final vuelvo a comenzar la cuenta = if(n1 > videgames.length) n1 = 0
+const nextPage = () => {            
   if(n1 < videogames.length){
     setN1(n1 + 10);                  
     setN2(n2 + 10);
@@ -45,17 +40,15 @@ const prevPage = () => {
     setN1(n1 - 10);
     setN2(n2 - 10);
 }
-
-
                                     
     return (
         <>
-        <div className = "cards">
+        <div className = {styles.cards}>
     
                 {
                     videogames.map((g) => {
                         return (
-                        <Link to ={`/gamedetail/${g.id}`} className = "link">
+                        <Link to ={`/gamedetail/${g.id}`} className = {styles.link}>
                             <Gamecard name={g.name} image={g.image} rating={g.rating} id={g.id} genres={g.genres} key={g.id}/>
                         </Link>
                         )
@@ -64,9 +57,9 @@ const prevPage = () => {
            
             
         </div>
-        <div className ="pagingcont">
-                <button className ="pagbtn" onClick ={prevPage} > &lt; </button>
-                <button className ="pagbtn" onClick ={nextPage}> &gt; </button>
+        <div className ={styles.pagingcont}>
+                <button className ={styles.pagbtn} onClick ={prevPage} > &lt; </button>
+                <button className = {styles.pagbtn} onClick ={nextPage}> &gt; </button>
         </div>
         </>
     )

@@ -8,6 +8,7 @@ export const ORDER_BYRATING_ASC = "ORDER_BYRATING_ASC";
 export const ORDER_BYRATING_DESC = "ORDER_BYRATING_DESC";
 export const FILTER_BYGENRE = "FILTER_BYGENRE";
 export const MADE_BYYOU = "MADE_BYYOU";
+export const ORDER_BY_DATE = "ORDER_BY_DATE";
 
 
 
@@ -67,5 +68,11 @@ export function filterByGenre(genre){
 export function madeByYou(){
     return {
         type: MADE_BYYOU
+    }
+}
+
+export function orderByDate(){
+    return {
+        type: ORDER_BY_DATE
     }
 }

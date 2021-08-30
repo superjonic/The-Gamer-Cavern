@@ -1,8 +1,8 @@
 import React from 'react';
-import FilterBy from './Filterby';
-import OrderBy from './OrderBy';
+import FilterBy from '../FilterBy/Filterby';
+import OrderBy from '../OrderBy/OrderBy.jsx';
 import { useState } from 'react';
-import './filterzone.css';
+import styles from './filterzone.module.css';
 
 export default function FilterZone(){
     const [toggle, setToggle] = useState(false);
@@ -14,17 +14,15 @@ export default function FilterZone(){
     return (
 
         <div>
-            <button onClick ={handleClick} className ="btnzone">Filter Zone</button>
+            <button onClick ={handleClick} className ={styles.btnzone}>Filter Zone</button>
             {
                 toggle ?
-                <div className = "zone"> 
+                <div className = {styles.zone}> 
                     <FilterBy />
                     <OrderBy />
                 </div>
                 : null
             }
-           
-
         </div>
     )
 }

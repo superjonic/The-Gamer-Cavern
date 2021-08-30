@@ -8,7 +8,7 @@ const { API_KEY } = process.env;
 const { Videogame, Genre } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 const URL = 'https://api.rawg.io/api/';
-const { Op } = require ('sequelize')
+const { Op } = require ('sequelize');
 const router = Router();
 
 

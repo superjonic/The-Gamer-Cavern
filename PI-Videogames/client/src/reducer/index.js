@@ -1,11 +1,20 @@
-import { GET_VIDEOGAMES, SEARCH_VIDEOGAME, ORDER_BYNAME_ASC, ORDER_BYNAME_DESC, ORDER_BYRATING_ASC, ORDER_BYRATING_DESC, FILTER_BYGENRE, MADE_BYYOU  } from "../actions";
+import { 
+  GET_VIDEOGAMES, 
+  SEARCH_VIDEOGAME, 
+  ORDER_BYNAME_ASC, 
+  ORDER_BYNAME_DESC,
+  ORDER_BYRATING_ASC, 
+  ORDER_BYRATING_DESC, 
+  FILTER_BYGENRE, 
+  MADE_BYYOU,
+  ORDER_BY_DATE  } from "../actions";
 
 
 const initialState = {
   videogames: []
 };
 
-function rootReducer (state = initialState, action) {     //Mati hace el order y filter en redux
+function rootReducer (state = initialState, action) {     
     switch(action.type) {
       // Aca va tu codigo;  
      
@@ -14,7 +23,7 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
           ...state,
           videogames: action.payload
         }
-            
+
       case SEARCH_VIDEOGAME:
           return {
             ...state,
@@ -57,7 +66,7 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
           ...state,
           videogames: state.videogames.filter((game) => {
              return game.genres.find((genre) =>{ 
-               return genre.slug === action.payload
+               return genre.name.toLowerCase() === action.payload
               })
           })
         }
@@ -67,7 +76,14 @@ function rootReducer (state = initialState, action) {     //Mati hace el order y
           videogames: state.videogames.filter((game) => {
             return game.id.length > 10
           })
-        }    
+        }
+        case ORDER_BY_DATE:
+          return {
+            ...state,
+            videogames: [...state.videogames].sort((prev, next) => {
+              return prev.released - next.released
+            })
+          }    
         
         default:
         return state;
