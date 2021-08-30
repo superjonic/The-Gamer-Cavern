@@ -6,7 +6,7 @@ h2, p {
 .card {
     height: 50vh;
     width: 50vh;
-    margin: 40px;
+    margin: 8%;
     border: solid 1px rgb(226, 143, 48);
     border-radius: 10px;
     color: white;
@@ -54,3 +54,4 @@ h2, p {
     color: orange;
     font-weight: bolder;
 }
+
